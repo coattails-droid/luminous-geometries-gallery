@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solar Fields #3 — Moonlight</title>
+<style>
+  html,body{margin:0;height:100%;background:#000;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;}
+  canvas{width:min(92vmin,720px);height:min(92vmin,720px);cursor:grab;touch-action:none;}
+  canvas:active{cursor:grabbing;}
+  #cap{color:#5b6570;font-size:11px;letter-spacing:.18em;margin-top:10px;
+    text-transform:uppercase;text-align:center;padding:0 16px;}
+</style>
+</head>
+<body>
+<canvas id="c" width="720" height="720"></canvas>
+<div id="cap">solar fields #3 · moonlight · drag to look · double-click to reset · 64s loop</div>
+<script>
+"use strict";
+const GEO = {"token": "genesis", "hash": "cfa2564e2813e15f3926c0667ea03d6491fb8ce32284610810f220d9cffc7c50", "S": 720, "mod": 180, "traits": {"density": "standard", "rings": 6, "dotGrid": "triangle", "trains": 2, "accent": "bold", "hue": ["coral", "amber", "ember"], "grid": "fusion"}, "foci": [{"x": 139.54592314951395, "y": 232.7207793864215, "bi": 1, "bj": 3}, {"x": 580.454076850486, "y": 487.27922061357845, "bi": 3, "bj": 1}], "radii": [{"r": 254.55844122715712, "n": 2}, {"r": 509.11688245431424, "n": 8}, {"r": 569.2099788303083, "n": 10}, {"r": 720, "n": 16}, {"r": 763.6753236814712, "n": 18}, {"r": 804.9844718999243, "n": 20}], "dots": [{"x": 286.51530771650465, "y": 317.5735931288072, "color": "#00ff66"}, {"x": 270.98616501035343, "y": 259.6180435514631, "color": "#b6ff00"}, {"x": 355.838978752739, "y": 112.64865898447236, "color": "#2e6bff"}, {"x": 402.4264068711928, "y": 286.51530771650465, "color": "#b6ff00"}, {"x": 460.3819564485369, "y": 270.98616501035343, "color": "#b6ff00"}, {"x": 576.2930556032251, "y": 239.92787959805088, "color": "#b6ff00"}, {"x": 433.48469228349535, "y": 402.4264068711928, "color": "#ff2bd6"}, {"x": 449.01383498964657, "y": 460.3819564485369, "color": "#b6ff00"}, {"x": 364.161021247261, "y": 607.3513410155276, "color": "#00f0ff"}, {"x": 333.1027358349584, "y": 491.4402418608395, "color": "#00ff66"}, {"x": 317.5735931288072, "y": 433.48469228349535, "color": "#2e6bff"}, {"x": 143.7069443967749, "y": 480.0721204019491, "color": "#2e6bff"}, {"x": -54.010889535930545, "y": -25.99868308799647, "color": "#00ff66"}, {"x": 745.9986830879965, "y": -54.010889535930545, "color": "#2e6bff"}, {"x": -25.998683087996483, "y": 774.0108895359306, "color": "#ff2bd6"}, {"x": 774.0108895359306, "y": 745.9986830879965, "color": "#ff2bd6"}, {"x": 716.0553399585865, "y": 761.5278257941478, "color": "#2e6bff"}, {"x": 3.944660041413556, "y": -41.52782579414772, "color": "#b6ff00"}, {"x": 761.5278257941477, "y": 3.944660041413556, "color": "#ff2bd6"}, {"x": -41.5278257941477, "y": 716.0553399585865, "color": "#b6ff00"}, {"x": -38.4817468297793, "y": 31.95686648934766, "color": "#2e6bff"}, {"x": 688.0431335106523, "y": -38.48174682977928, "color": "#8b2bff"}, {"x": 31.956866489347647, "y": 758.4817468297792, "color": "#2e6bff"}, {"x": 758.4817468297792, "y": 688.0431335106523, "color": "#8b2bff"}, {"x": 792.5861112064503, "y": 119.85575919610173, "color": "#8b2bff"}, {"x": 119.85575919610174, "y": -72.58611120645023, "color": "#00f0ff"}, {"x": -72.58611120645025, "y": 600.1442408038982, "color": "#00ff66"}, {"x": 600.1442408038982, "y": 792.5861112064503, "color": "#b6ff00"}, {"x": 703.5722762168036, "y": 19.473802747564818, "color": "#2e6bff"}, {"x": 700.5261972524352, "y": 703.5722762168036, "color": "#8b2bff"}, {"x": 19.473802747564804, "y": 16.427723783196413, "color": "#00f0ff"}, {"x": 16.427723783196427, "y": 700.5261972524352, "color": "#00f0ff"}, {"x": 367.2071002116294, "y": -76.74713245371115, "color": "#ff2bd6"}, {"x": 135.38490190225298, "y": -14.630561629106104, "color": "#8b2bff"}, {"x": 796.7471324537112, "y": 367.2071002116294, "color": "#00ff66"}, {"x": -14.630561629106126, "y": 584.615098097747, "color": "#00f0ff"}, {"x": 352.7928997883706, "y": 796.7471324537112, "color": "#2e6bff"}, {"x": -76.74713245371112, "y": 352.7928997883706, "color": "#ff2bd6"}, {"x": 734.6305616291061, "y": 135.38490190225298, "color": "#ff2bd6"}, {"x": 584.615098097747, "y": 734.6305616291061, "color": "#8b2bff"}, {"x": 147.8679656440358, "y": 727.4234614174768, "color": "#00f0ff"}, {"x": 526.659548520403, "y": 750.1597043352574, "color": "#2e6bff"}, {"x": 309.25155063428525, "y": -61.21798974755988, "color": "#00f0ff"}, {"x": 572.1320343559642, "y": -7.423461417476759, "color": "#8b2bff"}, {"x": -7.423461417476744, "y": 147.8679656440358, "color": "#b6ff00"}, {"x": 750.1597043352574, "y": 193.3404514795971, "color": "#b6ff00"}, {"x": -61.2179897475599, "y": 410.74844936571475, "color": "#2e6bff"}, {"x": 727.4234614174768, "y": 572.1320343559642, "color": "#00ff66"}, {"x": 193.34045147959708, "y": -30.159704335257363, "color": "#2e6bff"}, {"x": 781.2179897475598, "y": 309.25155063428525, "color": "#b6ff00"}, {"x": -30.159704335257345, "y": 526.6595485204028, "color": "#00f0ff"}, {"x": 410.74844936571475, "y": 781.2179897475598, "color": "#8b2bff"}, {"x": 587.6611770621155, "y": 50.53208815986734, "color": "#2e6bff"}, {"x": 132.33882293788457, "y": 669.4679118401327, "color": "#ff2bd6"}, {"x": 514.1764847786201, "y": 8.10568128867449, "color": "#8b2bff"}, {"x": 8.105681288674475, "y": 205.82351522137992, "color": "#ff2bd6"}, {"x": 669.4679118401326, "y": 587.6611770621155, "color": "#00f0ff"}, {"x": 205.8235152213799, "y": 711.8943187113255, "color": "#2e6bff"}, {"x": 50.53208815986736, "y": 132.33882293788457, "color": "#ff2bd6"}, {"x": 711.8943187113255, "y": 514.1764847786201, "color": "#2e6bff"}, {"x": 653.9387691339814, "y": 529.7056274847714, "color": "#ff2bd6"}, {"x": 66.06123086601858, "y": 190.29437251522864, "color": "#b6ff00"}, {"x": 190.29437251522867, "y": 653.9387691339814, "color": "#ff2bd6"}, {"x": 529.7056274847713, "y": 66.06123086601859, "color": "#ff2bd6"}, {"x": 680.836033299023, "y": 398.26538562393193, "color": "#ff2bd6"}, {"x": 321.73461437606807, "y": 680.836033299023, "color": "#ff2bd6"}, {"x": 101.28053752558202, "y": 553.5568126854445, "color": "#00f0ff"}, {"x": 398.26538562393193, "y": 39.16396670097701, "color": "#00ff66"}, {"x": 39.16396670097703, "y": 321.73461437606807, "color": "#2e6bff"}, {"x": 166.44318731455553, "y": 101.28053752558205, "color": "#8b2bff"}, {"x": 618.7194624744179, "y": 166.44318731455553, "color": "#00ff66"}, {"x": 553.5568126854445, "y": 618.7194624744179, "color": "#ff2bd6"}, {"x": 340.3098360465878, "y": 54.69310940712826, "color": "#8b2bff"}, {"x": 54.69310940712825, "y": 379.6901639534122, "color": "#b6ff00"}, {"x": 634.2486051805693, "y": 224.39873689189966, "color": "#2e6bff"}, {"x": 495.60126310810034, "y": 634.2486051805693, "color": "#2e6bff"}, {"x": 224.39873689189963, "y": 85.75139481943079, "color": "#00ff66"}, {"x": 665.3068905928717, "y": 340.3098360465878, "color": "#00f0ff"}, {"x": 85.7513948194308, "y": 495.60126310810034, "color": "#2e6bff"}, {"x": 379.6901639534122, "y": 665.3068905928717, "color": "#b6ff00"}, {"x": 159.23608710292612, "y": 538.0276699792933, "color": "#b6ff00"}, {"x": 306.20547166991685, "y": 622.880483721679, "color": "#00f0ff"}, {"x": 413.79452833008315, "y": 97.1195162783211, "color": "#00ff66"}, {"x": 181.97233002070675, "y": 159.23608710292615, "color": "#00ff66"}, {"x": 560.7639128970739, "y": 181.97233002070675, "color": "#2e6bff"}, {"x": 538.0276699792933, "y": 560.7639128970739, "color": "#00ff66"}, {"x": 97.11951627832113, "y": 306.20547166991685, "color": "#2e6bff"}, {"x": 622.8804837216788, "y": 413.79452833008315, "color": "#00f0ff"}, {"x": 480.0721204019491, "y": 576.2930556032252, "color": "#00f0ff"}, {"x": 239.92787959805085, "y": 143.70694439677487, "color": "#2e6bff"}, {"x": 112.64865898447235, "y": 364.161021247261, "color": "#8b2bff"}, {"x": 607.3513410155276, "y": 355.838978752739, "color": "#00ff66"}, {"x": 444.8528137423857, "y": 213.03061543300927, "color": "#b6ff00"}, {"x": 213.0306154330093, "y": 275.1471862576143, "color": "#00ff66"}, {"x": 506.9693845669907, "y": 444.8528137423857, "color": "#8b2bff"}, {"x": 275.1471862576143, "y": 506.9693845669907, "color": "#00ff66"}, {"x": 228.55975813916052, "y": 333.1027358349584, "color": "#b6ff00"}, {"x": 491.4402418608395, "y": 386.8972641650416, "color": "#8b2bff"}, {"x": 386.8972641650416, "y": 228.55975813916055, "color": "#8b2bff"}], "layerAngles": [1.308996938995747, 1.8325957145940457, 2.356194490192345], "layerTints": ["#99f6e4", "#a5f3fc", "#c4b5fd"], "dotRings": [12, 21, 33, 33]};
+// ---------------------------------------------------------------------------
+// Solar Fields. The genesis hash's geometry was dumped from
+// the real 2D engine (dump_geo_hash.js): foci, ring radii, star
+// positions/colors. z-depths are hash-seeded here via cyrb53 (same function
+// as the engine). The renderer is token-agnostic: swap the GEO source for
+// live trait derivation.
+// NOTE: GEO.layerAngles are radians (75°/105°/135°) — used directly.
+// ---------------------------------------------------------------------------
+
+function cyrb53(str, seed) {
+  let h1 = 0xdeadbeef ^ (seed || 0), h2 = 0x41c6ce57 ^ (seed || 0);
+  for (let i = 0; i < str.length; i++) {
+    const ch = str.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+}
+function sfc32(a, b, c, d) {
+  return function () {
+    a >>>= 0; b >>>= 0; c >>>= 0; d >>>= 0;
+    let t = ((a + b) | 0) + d | 0;
+    d = (d + 1) | 0;
+    a = b ^ (b >>> 9);
+    b = (c + (c << 3)) | 0;
+    c = (c << 21) | (c >>> 11);
+    c = (c + t) | 0;
+    return (t >>> 0) / 4294967296;
+  };
+}
+function hexRgb(h) {
+  h = h.replace("#", "");
+  return [parseInt(h.slice(0, 2), 16) / 255,
+          parseInt(h.slice(2, 4), 16) / 255,
+          parseInt(h.slice(4, 6), 16) / 255];
+}
+function fibSphere(n) {
+  const a = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const y = 1 - 2 * (i + 0.5) / n;
+    const r = Math.sqrt(Math.max(0, 1 - y * y));
+    const phi = i * 2.399963229728653;
+    a[i * 3] = r * Math.cos(phi); a[i * 3 + 1] = r * Math.sin(phi); a[i * 3 + 2] = y;
+  }
+  return a;
+}
+function gauss(rng) {
+  let u = 0, v = 0;
+  while (u === 0) u = rng();
+  while (v === 0) v = rng();
+  return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+}
+
+const PR = 1.25;               // render pixel ratio (Calvin 2026-10-05): eased again
+                            // to lighten the load — 900px backing, 720 CSS
+const S = 720 * PR;         // canvas size (backing pixels)
+const TAU = Math.PI * 2, PX = 2 / S;
+const ux = x => x * PX - 1, uy = y => 1 - y * PX;
+const HASH = GEO.hash;
+// ---- Trait system (Calvin 2026-10-05): colors are hash-derived.
+// The "Sunlight" palette is the locked design (DESIGN_LOCK.md). "Moonlight"
+// is the only other variant.
+// are placeholders for Calvin's direction — never edit Sunset in place.
+const GENESIS_HASH = "60ad8cda9b965ab8f0927bf1b12fea86d01db4c9b5bb762aac4752f29025425d";
+const PALETTES = {
+  // "Sunrise" — correlating dawn palette (Calvin 2026-10-05): same warm
+  // family as Sunset, but lighter/softer — peach, rose, pale gold.
+  // "Sunlight" — locked (Calvin 2026-10-05)
+  Sunlight: {
+    shell: "#ffa37e",
+    web3: ["#ffc46e", 0.112], web6: ["#ff7f8a", 0.124],
+    web9: ["#c46eff", 0.089], web12: ["#ff7a4d", 0.074],
+    heart: "#ffd166",
+    lattice: "#ffe3c2", latticeMul: 0.72,
+    dotRamp: ["#ffc46e", "#ff9e4a", "#ff8a5e", "#ff7e5e", "#ff6e5e"],
+    wash: ["#ffcf6e", "#ff8a5e", "#e84f7e"], washMul: 0.64,
+  },
+  // "Moonlight" — silver base + indigo webbing (Calvin 2026-10-05, locked)
+  Moonlight: {
+    shell: "#c8d8e8",
+    web3: ["#b8b8ff", 0.112], web6: ["#8a8ae8", 0.124],
+    web9: ["#5a5ad8", 0.089], web12: ["#3a3ab0", 0.074],
+    heart: "#f8fbff",
+    lattice: "#d8e4f2", latticeMul: 0.72,
+    dotRamp: ["#b8b8ff", "#8a8ae8", "#5a5ad8", "#3a3ab0", "#2a2a88"],
+    wash: ["#b8b8ff", "#8a8ae8", "#5a5ad8"], washMul: 0.64,
+  },
+  // DRAFT palettes — for Calvin's review, not final
+};
+const MOTIONS = {
+  genesis: { loop: 64, foldTurns: 1 },   // locked (Calvin 2026-10-05)
+};
+function deriveTraits(hash) {
+  if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis" };
+  const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16);
+  const pn = Object.keys(PALETTES), mn = Object.keys(MOTIONS);
+  return { palette: pn[b0 % pn.length], motion: mn[b1 % mn.length] };
+}
+const TRAITS = deriveTraits(HASH);
+const PAL = (() => {
+  const p = PALETTES[TRAITS.palette];
+  return {
+    shellCols: null,
+    lattice: hexRgb(p.lattice), latticeMul: p.latticeMul,
+    dotRamp: p.dotRamp.map(hexRgb),
+    web3: [p.web3[0], p.web3[1]], web6: [p.web6[0], p.web6[1]],
+    web9: [p.web9[0], p.web9[1]], web12: [p.web12[0], p.web12[1]],
+    core: p.heart,
+    wash: p.wash, washMul: p.washMul,
+    shell: hexRgb(p.shell), heart: hexRgb(p.heart),
+  };
+})();
+const MOT = MOTIONS[TRAITS.motion];
+const LINE = hexRgb("#bfffd2"); // light neon-green linework (midnight)
+
+// foci: x/y from the engine, z hash-seeded — then all brought to the exact
+// center for Turning: a single focus at the central vertex
+const foci = GEO.foci.map((f, i) => [
+  ux(f.x), uy(f.y),
+  ((cyrb53(HASH + "::focus3d::" + i) % 1000) / 1000 - 0.5) * 0.6
+]);
+{
+  const C = [(foci[0][0] + foci[1][0]) / 2, (foci[0][1] + foci[1][1]) / 2,
+             (foci[0][2] + foci[1][2]) / 2];
+  foci[0] = C; foci[1] = C; foci[2] = C; foci[3] = C;
+}
+// unique focus positions: the centered pair is one visual system
+const uniqFoci = [...new Map(foci.map(f => [f.join(","), f])).values()];
+const radii = GEO.radii.map(o => o.r * PX);
+// central vertex: midpoint of the two foci — the camera's aim point
+const CV = [(foci[0][0] + foci[1][0]) / 2, (foci[0][1] + foci[1][1]) / 2,
+            (foci[0][2] + foci[1][2]) / 2];
+const RMAX = Math.max.apply(null, radii);
+
+// family point sets (structure-of-arrays)
+function newFam(n) {
+  return { n, x: new Float32Array(n), y: new Float32Array(n), z: new Float32Array(n),
+           r: new Float32Array(n), g: new Float32Array(n), b: new Float32Array(n),
+           dx: new Float32Array(n), dy: new Float32Array(n), dz: new Float32Array(n),
+           dist: new Float32Array(n), ring: new Int8Array(n), ang: new Float32Array(n) };
+}
+
+// shells: NSHELL evenly-spaced layers spanning the token's inner..outer
+// ring range, as fibonacci spheres about each focus — one uniform color,
+// the mid star-coral (Calvin 2026-10-05: single shell color, star opacity).
+// SHELL_R_SCALE: core doubled 2026-10-05 (0.22 -> 0.44, Calvin).
+const SHELL_R_SCALE = 0.44;
+const SHELL_COL = PAL.shell; // trait-driven (Sunlight: #ffa37e)
+const NSHELL = 12;
+// SHELL_TIGHTEN: pull the larger shells inward (Calvin 2026-10-05). The
+// innermost shell stays put; the outermost comes in by (1-TIGHTEN) of the
+// span, with the pull scaling linearly across the layers.
+const SHELL_TIGHTEN = 0.50;
+const shellRadii = [];
+{
+  const rIn = Math.min.apply(null, radii), rOut = Math.max.apply(null, radii);
+  for (let k = 0; k < NSHELL; k++) {
+    const t = NSHELL === 1 ? 0 : k / (NSHELL - 1);
+    shellRadii.push((rIn + (rOut - rIn) * t * SHELL_TIGHTEN) * SHELL_R_SCALE);
+  }
+}
+const shells = [];
+for (const F of uniqFoci) {
+  for (let ri = 0; ri < NSHELL; ri++) {
+    const R = shellRadii[ri];
+    const shc = SHELL_COL;
+    const n = Math.round(250 + 650 * (R / RMAX) * (R / RMAX));
+    const s = newFam(n), sp = fibSphere(n);
+    for (let i = 0; i < n; i++) {
+      s.x[i] = F[0] + R * sp[i * 3];
+      s.y[i] = F[1] + R * sp[i * 3 + 1];
+      s.z[i] = F[2] + R * sp[i * 3 + 2];
+      s.dx[i] = sp[i * 3]; s.dy[i] = sp[i * 3 + 1]; s.dz[i] = sp[i * 3 + 2];
+      s.dist[i] = R;
+      s.r[i] = shc[0]; s.g[i] = shc[1]; s.b[i] = shc[2];
+    }
+    shells.push(s);
+  }
+}
+// amber heart-light: a very small, hot amber sphere at the exact volumetric
+// center CV (Calvin 2026-10-05). Built as FAM 0 so it pins at the center
+// (exempt from the fold) and gets the shell limb-dissolve; HDR color burns
+// through SHELL_GAIN so it reads as a light source, not a shell.
+{
+  const AR = 0.0067, AN = 120, HOT = 1.25; // (Calvin 2026-10-05: down by 1/3 from 0.01)
+  const amber = PAL.heart; // trait-driven (Sunlight: #ffd166)
+  const s = newFam(AN), sp = fibSphere(AN);
+  for (let i = 0; i < AN; i++) {
+    s.x[i] = CV[0] + AR * sp[i * 3];
+    s.y[i] = CV[1] + AR * sp[i * 3 + 1];
+    s.z[i] = CV[2] + AR * sp[i * 3 + 2];
+    s.dx[i] = sp[i * 3]; s.dy[i] = sp[i * 3 + 1]; s.dz[i] = sp[i * 3 + 2];
+    s.dist[i] = AR;
+    s.r[i] = amber[0] * HOT; s.g[i] = amber[1] * HOT; s.b[i] = amber[2] * HOT;
+  }
+  shells.push(s);
+}
+
+// lattices: 3 cubic grids rotated about z by the layer angles (radians),
+// in the monochrome line tone. Shells pass through the coarse vertices.
+const lattices = [];
+{
+  const LP = 0.25, RV = 1.9, base = [];
+  for (let ix = -RV; ix <= RV + 1e-9; ix += LP)
+    for (let iy = -RV; iy <= RV + 1e-9; iy += LP)
+      for (let iz = -RV; iz <= RV + 1e-9; iz += LP)
+        if (ix * ix + iy * iy + iz * iz <= RV * RV) base.push(ix, iy, iz);
+  const nb = base.length / 3;
+  for (const a of GEO.layerAngles) {
+    const ca = Math.cos(a), sa = Math.sin(a), L = newFam(nb);
+    for (let i = 0; i < nb; i++) {
+      const x = base[i * 3], y = base[i * 3 + 1];
+      L.x[i] = ca * x - sa * y;
+      L.y[i] = sa * x + ca * y;
+      L.z[i] = base[i * 3 + 2];
+      const lc = PAL.lattice || LINE;
+      L.r[i] = lc[0] * PAL.latticeMul; L.g[i] = lc[1] * PAL.latticeMul; L.b[i] = lc[2] * PAL.latticeMul;
+    }
+    lattices.push(L);
+  }
+}
+
+// stars: the hash dots plus deterministic fillers topping up short rings
+// (design 12/21/33/33); the whole field is then duplicated at 30°/60°
+// clockwise → 3x stars. Copies keep color/ring/blink.
+const dotList = GEO.dots.map((d, k) => ({
+  x: ux(d.x), y: uy(d.y),
+  z: ((cyrb53(HASH + "::star3d::" + k) % 1000) / 1000 - 0.5) * 0.9,
+  color: d.color, ring: k < 12 ? 0 : k < 33 ? 1 : k < 66 ? 2 : 3
+}));
+{
+  // a dump can come up short of a ring's designed count (token 1: 10 of the
+  // outer ring's 33) — top up short rings with golden-angle fillers on the
+  // ring's mean radius (deterministic). rings a token doesn't have at all
+  // (sparse traits) are left alone, not invented.
+  const pal = [...new Set(dotList.map(d => d.color))];
+  const designed = GEO.dotRings || [12, 21, 33, 33];
+  for (let r = 0; r < 4; r++) {
+    const inR = dotList.filter(d => d.ring === r);
+    const short = (designed[r] || 0) - inR.length;
+    if (!inR.length || short <= 0) continue;
+    const rad = inR.reduce((s, d) => s + Math.hypot(d.x, d.y), 0) / inR.length;
+    for (let j = 0; j < short; j++) {
+      const ang = j * 2.399963;
+      const rr = rad * (0.94 + 0.12 * (((j * 5) % 7) / 6));
+      dotList.push({ x: Math.cos(ang) * rr, y: Math.sin(ang) * rr,
+                     z: (((j * 0.618034) % 1) - 0.5) * 0.9,
+                     color: pal[j % pal.length], ring: r });
+    }
+  }
+}
+// prune sparse-region dots: a dot whose nearest neighbor is much farther
+// than the field's median spacing reads as disconnected from the webbing,
+// so it goes (measured per seed; this genesis flags ~10 of 99)
+{
+  const nn = dotList.map((d, i) => {
+    let m = Infinity;
+    for (let j = 0; j < dotList.length; j++) {
+      if (j === i) continue;
+      const e = dotList[j];
+      const dd = (d.x - e.x) * (d.x - e.x) + (d.y - e.y) * (d.y - e.y) + (d.z - e.z) * (d.z - e.z);
+      if (dd < m) m = dd;
+    }
+    return Math.sqrt(m);
+  });
+  const srt = [...nn].sort((a, b) => a - b);
+  const med = srt[srt.length >> 1], cut = med * 1.75;
+  const kept = dotList.filter((d, i) => nn[i] <= cut);
+  dotList.length = 0;
+  for (const d of kept) dotList.push(d);
+}
+// Turning: 48 accent dots total — 16 seeds × 3 rotated copies
+// (Calvin 2026-10-05: halved from 99). Deterministically thin the pruned
+// list to 16 by hash order so the set is stable per genesis.
+{
+  const target = 16;
+  if (dotList.length > target) {
+    const keyed = dotList.map((d, i) =>
+      [cyrb53(HASH + "::thin::" + d.x.toFixed(4) + "," + d.y.toFixed(4) + "," + d.z.toFixed(4)), i]);
+    keyed.sort((a, b) => a[0] - b[0]);
+    const keep = new Set(keyed.slice(0, target).map(([, i]) => i));
+    const thinned = dotList.filter((_, i) => keep.has(i));
+    dotList.length = 0;
+    for (const d of thinned) dotList.push(d);
+  }
+}
+// outer ring (ring 1) pulled inward by 1/3: ring-1 dot positions scale
+// toward the center by 2/3 (Calvin 2026-10-05). runs before the stars are
+// built, so webbing, rim fade, and focus assignment all follow.
+{
+  const k = 2 / 3;
+  for (const d of dotList) {
+    if (d.ring !== 1) continue;
+    d.x = CV[0] + (d.x - CV[0]) * k;
+    d.y = CV[1] + (d.y - CV[1]) * k;
+    d.z = CV[2] + (d.z - CV[2]) * k;
+  }
+}
+const stars = newFam(dotList.length * 3);
+dotList.forEach((d, k) => {
+  const x = d.x, y = d.y, z = d.z;
+  const c = PAL.dotRamp ? PAL.dotRamp[cyrb53(d.color) % PAL.dotRamp.length]
+                      : hexRgb(d.color);
+  let nf = 0, bd = Infinity;
+  for (let fi = 0; fi < foci.length; fi++) {
+    const ex = x - foci[fi][0], ey = y - foci[fi][1], ez = z - foci[fi][2];
+    const dd = ex * ex + ey * ey + ez * ez;
+    if (dd < bd) { bd = dd; nf = fi; }
+  }
+  const dd = Math.sqrt(bd) || 1e-9, F = foci[nf];
+  stars.x[k] = x; stars.y[k] = y; stars.z[k] = z;
+  stars.dx[k] = (x - F[0]) / dd; stars.dy[k] = (y - F[1]) / dd; stars.dz[k] = (z - F[2]) / dd;
+  stars.dist[k] = dd;
+  stars.r[k] = c[0]; stars.g[k] = c[1]; stars.b[k] = c[2];
+  stars.ring[k] = d.ring;
+  stars.ang[k] = Math.atan2(y, x) / TAU;
+});
+// rigid rotated copies: 30° and 60° clockwise about z (seen from above)
+{
+  const n0 = dotList.length;
+  for (let c = 1; c <= 2; c++) {
+    const a = -c * Math.PI / 6, ca = Math.cos(a), sa = Math.sin(a);
+    for (let k = 0; k < n0; k++) {
+      const j = c * n0 + k, x = stars.x[k], y = stars.y[k];
+      stars.x[j] = ca * x - sa * y;
+      stars.y[j] = sa * x + ca * y;
+      stars.z[j] = stars.z[k];
+      const dx = stars.dx[k], dy = stars.dy[k];
+      stars.dx[j] = ca * dx - sa * dy;
+      stars.dy[j] = sa * dx + ca * dy;
+      stars.dz[j] = stars.dz[k];
+      stars.dist[j] = stars.dist[k];
+      stars.r[j] = stars.r[k]; stars.g[j] = stars.g[k]; stars.b[j] = stars.b[k];
+      stars.ring[j] = stars.ring[k];
+      stars.ang[j] = stars.ang[k];
+    }
+  }
+}
+// outer ring rim fade: ring-1 dots dissolve to 100% transparency at the
+// composition's edge, by base distance from the center (Calvin 2026-10-05).
+// static per dot (base positions), so nothing shimmers as the view orbits.
+{
+  let rMin = Infinity, rMax = -Infinity;
+  const n0 = stars.n;
+  for (let k = 0; k < n0; k++) {
+    if (stars.ring[k] !== 1) continue;
+    const d = Math.hypot(stars.x[k] - CV[0], stars.y[k] - CV[1], stars.z[k] - CV[2]);
+    if (d < rMin) rMin = d; if (d > rMax) rMax = d;
+  }
+  stars.fade = new Float32Array(n0).fill(1);
+  const span = Math.max(1e-9, rMax - rMin);
+  for (let k = 0; k < n0; k++) {
+    if (stars.ring[k] !== 1) continue;
+    const d = Math.hypot(stars.x[k] - CV[0], stars.y[k] - CV[1], stars.z[k] - CV[2]);
+    const t = Math.min(1, Math.max(0, (d - rMin) / span));
+    stars.fade[k] = 1 - t * t * (3 - 2 * t); // smoothstep: full → 0 at the rim
+  }
+}
+
+// wash: warm volumetric glow around each focus
+const wash = newFam(uniqFoci.length * 1200);
+{
+  const rng = sfc32(cyrb53(HASH + "::wash") >>> 0, 1234, 5678, 9012);
+  const cols = PAL.wash.map(hexRgb);
+  let k = 0;
+  for (const F of uniqFoci) for (let i = 0; i < 1200; i++) {
+    const c = cols[k % 3];
+    wash.x[k] = F[0] + gauss(rng) * 0.34;
+    wash.y[k] = F[1] + gauss(rng) * 0.34;
+    wash.z[k] = F[2] + gauss(rng) * 0.34;
+    wash.r[k] = c[0] * PAL.washMul; wash.g[k] = c[1] * PAL.washMul; wash.b[k] = c[2] * PAL.washMul;
+    k++;
+  }
+}
+
+// fam: 0 shell, 1 lattice, 2 star, 3 wash
+const ALLS = [...shells.map(s => [s, 0]), ...lattices.map(s => [s, 1]), [stars, 2], [wash, 3]];
+let TOT = 0;
+ALLS.forEach(([f]) => TOT += f.n);
+const X = new Float32Array(TOT), Y = new Float32Array(TOT), Z = new Float32Array(TOT),
+      RR = new Float32Array(TOT), GG = new Float32Array(TOT), BB = new Float32Array(TOT),
+      DX = new Float32Array(TOT), DY = new Float32Array(TOT), DZ = new Float32Array(TOT),
+      DIST = new Float32Array(TOT), RING = new Int8Array(TOT), ANG = new Float32Array(TOT),
+      FAM = new Int8Array(TOT), OFADE = new Float32Array(TOT).fill(1);
+{
+  let o = 0;
+  for (const [f, tag] of ALLS) {
+    X.set(f.x, o); Y.set(f.y, o); Z.set(f.z, o);
+    RR.set(f.r, o); GG.set(f.g, o); BB.set(f.b, o);
+    DX.set(f.dx, o); DY.set(f.dy, o); DZ.set(f.dz, o);
+    DIST.set(f.dist, o); RING.set(f.ring, o); ANG.set(f.ang, o);
+    FAM.fill(tag, o, o + f.n);
+    if (f.fade) OFADE.set(f.fade, o);
+    o += f.n;
+  }
+}
+
+// toroidal fold rigging: horizontal ring of radius FOLD_R through the central
+// vertex; per point q = nearest ring point, d = p - q, t = ring tangent.
+// each frame d rotates about t by the global fold angle — the fold makes
+// full looping rotations (FOLD_TURNS turns per 16s loop) rather than
+// winding up and back down. shells are exempt: they stay centered and
+// spin in place.
+const FOLD_R = 1.0; // FOLD_TURNS now trait-driven via MOT (genesis: 1)
+const FQX = new Float32Array(TOT), FQY = new Float32Array(TOT), FQZ = new Float32Array(TOT),
+      FDX = new Float32Array(TOT), FDY = new Float32Array(TOT), FDZ = new Float32Array(TOT),
+      FCX = new Float32Array(TOT), FCY = new Float32Array(TOT), FCZ = new Float32Array(TOT),
+      FTX = new Float32Array(TOT), FTY = new Float32Array(TOT), FSD = new Float32Array(TOT);
+for (let i = 0; i < TOT; i++) {
+  const rx = X[i] - CV[0], ry = Y[i] - CV[1];
+  const rr = Math.hypot(rx, ry);
+  if (rr < 1e-4 || FAM[i] === 0) { // on-axis or shells: pinned, no fold —
+    // the shells stay centered and spin in place instead of heaving
+    FQX[i] = X[i]; FQY[i] = Y[i]; FQZ[i] = Z[i];
+    continue;
+  }
+  const qx = CV[0] + FOLD_R * rx / rr, qy = CV[1] + FOLD_R * ry / rr;
+  const dx = X[i] - qx, dy = Y[i] - qy, dz = Z[i] - CV[2];
+  const tx = -ry / rr, ty = rx / rr;
+  FQX[i] = qx; FQY[i] = qy; FQZ[i] = CV[2];
+  FDX[i] = dx; FDY[i] = dy; FDZ[i] = dz;
+  FCX[i] = ty * dz; FCY[i] = -tx * dz; FCZ[i] = tx * dy - ty * dx;
+  FTX[i] = tx; FTY[i] = ty; FSD[i] = tx * dx + ty * dy;
+}
+
+// accent web: each dot joined to its nearest neighbors (world-space
+// distance, across all three rotated fields). Four layers, nested sets:
+//   green   — 3 nearest neighbors (~600 threads)
+//   purple  — 6 nearest neighbors (~1100 threads)
+//   magenta — 9 nearest neighbors (~1600 threads)
+//   ember   — 12 nearest neighbors (~2000 threads)
+// the pairs are static (dots don't move in world space, only the camera
+// does), so they're computed once here and re-projected every frame
+let starOff = 0;
+for (const [f, tag] of ALLS) { if (tag === 2) break; starOff += f.n; }
+const CPAIRS = [], CPAIRS6 = [], CPAIRS9 = [], CPAIRS12 = [];
+{
+  const n = stars.n, seen3 = new Set(), seen6 = new Set(), seen9 = new Set(), seen12 = new Set(), KNB = 12;
+  for (let i = 0; i < n; i++) {
+    const best = [];
+    const xi = stars.x[i], yi = stars.y[i], zi = stars.z[i];
+    for (let j = 0; j < n; j++) {
+      if (j === i) continue;
+      const dx = stars.x[j] - xi, dy = stars.y[j] - yi, dz = stars.z[j] - zi;
+      const d = dx * dx + dy * dy + dz * dz;
+      if (best.length < KNB || d < best[best.length - 1][0]) {
+        best.push([d, j]);
+        best.sort((a, b) => a[0] - b[0]);
+        if (best.length > KNB) best.length = KNB;
+      }
+    }
+    best.forEach(([, b], k) => {
+      const key = i < b ? i * n + b : b * n + i;
+      if (!seen12.has(key)) { seen12.add(key); CPAIRS12.push([starOff + i, starOff + b]); }
+      if (k < 9 && !seen9.has(key)) { seen9.add(key); CPAIRS9.push([starOff + i, starOff + b]); }
+      if (k < 6 && !seen6.has(key)) { seen6.add(key); CPAIRS6.push([starOff + i, starOff + b]); }
+      if (k < 3 && !seen3.has(key)) { seen3.add(key); CPAIRS.push([starOff + i, starOff + b]); }
+    });
+  }
+}
+
+// camera: 360° orbit at 45° below the plane, looking up into the central vertex (central axis); drag adds an offset
+function basis(th) {
+  // orbit circles the central vertex itself: constant distance, CV pinned to canvas center
+  const el = -Math.PI / 32, ce = Math.cos(el), se = Math.sin(el);
+  const cx = CV[0] + 3.6 * ce * Math.cos(th), cy = CV[1] + 3.6 * ce * Math.sin(th), cz = CV[2] + 3.6 * se;
+  const fx0 = CV[0] - cx, fy0 = CV[1] - cy, fz0 = CV[2] - cz;
+  const fl = Math.hypot(fx0, fy0, fz0) || 1e-9;
+  const fx = fx0 / fl, fy = fy0 / fl, fz = fz0 / fl;
+  const rl = Math.hypot(fx, fy) || 1e-9;
+  const rx = fy / rl, ry = -fx / rl, rz = 0;                 // right
+  const ux2 = ry * fz - rz * fy, uy2 = rz * fx - rx * fz, uz2 = rx * fy - ry * fx; // up
+  // screen offset of the aim point: project relative to CV so it lands on canvas center
+  const ox = CV[0] * rx + CV[1] * ry + CV[2] * rz;
+  const oy = CV[0] * ux2 + CV[1] * uy2 + CV[2] * uz2;
+  return { rx, ry, rz, ux: ux2, uy: uy2, uz: uz2, fx, fy, fz, ox, oy };
+}
+
+// fit framing over the whole orbit
+let SC = 140;
+{
+  let mx = 0;
+  // sample the full fold rotation too — it swings points beyond the base volume
+  const folds = [0, Math.PI / 2, Math.PI, 3 * Math.PI / 2];
+  for (let a = 0; a < 16; a++) {
+    const b = basis(a / 16 * TAU);
+    for (const fa of folds) {
+      const fc = Math.cos(fa), fs = Math.sin(fa), fk = 1 - fc;
+      for (let i = 0; i < TOT; i++) {
+        const x = FQX[i] + FDX[i] * fc + FCX[i] * fs + FTX[i] * FSD[i] * fk;
+        const y = FQY[i] + FDY[i] * fc + FCY[i] * fs + FTY[i] * FSD[i] * fk;
+        const z = FQZ[i] + FDZ[i] * fc + FCZ[i] * fs;
+        const sx = x * b.rx + y * b.ry + z * b.rz - b.ox;
+        const sy = x * b.ux + y * b.uy + z * b.uz - b.oy;
+        const m = Math.max(Math.abs(sx), Math.abs(sy));
+        if (m > mx) mx = m;
+      }
+    }
+  }
+  SC = 2.16 * 8.8364 * (S / 2 - 30) / mx; // zoomed in 33% (2026-10-05): 6.6439 * 1.33
+}
+
+// interaction: drag to look around (adds an offset to the 360° orbit)
+const cv = document.getElementById("c");
+cv.width = cv.height = S; // match backing store to render pixel ratio
+let dragTheta = 0, dragging = false, lastPX = 0;
+cv.addEventListener("pointerdown", e => {
+  dragging = true; lastPX = e.clientX; cv.setPointerCapture(e.pointerId);
+});
+cv.addEventListener("pointermove", e => {
+  if (dragging) { dragTheta += (e.clientX - lastPX) * 0.01; lastPX = e.clientX; }
+});
+cv.addEventListener("pointerup", () => dragging = false);
+cv.addEventListener("pointercancel", () => dragging = false);
+cv.addEventListener("dblclick", () => dragTheta = 0);
+
+const ctx = cv.getContext("2d");
+// accent-dot intensity gain: the dots are additive pixels, so "opacity" here
+// is brightness — 0.0 = fully transparent (Calvin 2026-10-05)
+const DOT_GAIN = 0.0;
+// shells: one set per unique focus — opacity halved again per Calvin
+// (2026-10-05), after briefly matching the stars
+const SHELL_GAIN = 1.0; // (Calvin 2026-10-05: full brightness)
+// wave modes: 0 breath (single front, out-and-back), 1 pulse train
+// (fronts radiate outward continuously), 2 spiral (front x rotating arms),
+// 3 double (two fronts crossing), 4 off, 5 spiral on shells only
+// (stars stay still). Calvin retired the spiral 2026-10-05: shells hold
+// constant color and brightness — back to 4 (still).
+const WAVE_MODE = 4;
+// shell spin: turns per 16s loop about the z-axis through the fixed center.
+// the camera orbits once per loop, so 2 turns read as 1 net turn on screen.
+const SHELL_TURNS = 2;
+// outer star ring (ring 1) renders smaller; dimming off (full brightness)
+// accent-dot triangular core scaled by 1/4 smaller (Calvin 2026-10-05)
+const OUTER_DOT_SIZE = 0.6, OUTER_DOT_DIM = 1.0, DOT_CORE_SCALE = 0.375; // halved 2026-10-05 (Calvin)
+// secondary duplicated layer: opacity of the 90°-rotated copy
+// (Calvin 2026-10-05: equal opacity with the original)
+const DUP_ALPHA = 1.0;
+// wash toggle: false = volumetric glow family not rendered (audition 2026-10-05)
+const WASH_ON = false;
+const img = ctx.createImageData(S, S);
+const pxd = img.data;
+const SXA = new Float32Array(TOT), SYA = new Float32Array(TOT),
+      SZA = new Float32Array(TOT), BRA = new Float32Array(TOT), ALA = new Float32Array(TOT);
+const t0 = performance.now();
+
+function draw(now) {
+  const t = (now - t0) / 1000;
+  const lp = (t % MOT.loop) / MOT.loop; // trait-driven loop (genesis: 64s)
+  const wp = (t % (MOT.loop / 2)) / (MOT.loop / 2); // breath: half the loop
+  const b = basis(TAU * lp + dragTheta); // 360° orbit; drag adds an offset
+  const tri = wp < 0.5 ? wp * 2 : 2 - wp * 2;
+  // wavefront positions per mode (W0B < 0 = single front)
+  let W0A = RMAX * tri, W0B = -1;
+  if (WAVE_MODE === 1) {         // pulse train: fronts radiate outward, wrapping
+    const p = (t % (MOT.loop / 4)) / (MOT.loop / 4);
+    W0A = RMAX * p; W0B = RMAX * ((p + 0.5) % 1);
+  } else if (WAVE_MODE === 3) {  // double: one front out, one in, crossing
+    W0A = RMAX * tri; W0B = RMAX * (1 - tri);
+  }
+  // (blink retired: tSec clock removed with it)
+  // toroidal fold: full looping rotation, MOT.foldTurns turns per loop
+  // (fold angle is global, so one sin/cos serves all points)
+  const fa = TAU * lp * MOT.foldTurns;
+  const fc = Math.cos(fa), fs = Math.sin(fa), fk = 1 - fc;
+
+  let smin = Infinity, smax = -Infinity;
+  for (let i = 0; i < TOT; i++) {
+    // fold first (rigid rotation about the ring tangent), then the wave rides on top
+    let x = FQX[i] + FDX[i] * fc + FCX[i] * fs + FTX[i] * FSD[i] * fk;
+    let y = FQY[i] + FDY[i] * fc + FCY[i] * fs + FTY[i] * FSD[i] * fk;
+    let z = FQZ[i] + FDZ[i] * fc + FCZ[i] * fs, br = 1;
+    const fm = FAM[i];
+    if (fm === 0 || fm === 2) {
+      const d = DIST[i];
+      let g;
+      const spiralHere = WAVE_MODE === 2 || (WAVE_MODE === 5 && fm === 0);
+      if (WAVE_MODE === 4 || (WAVE_MODE === 5 && fm === 2)) {
+        g = 0; // wave off: steady
+      } else if (spiralHere) {
+        // spiral: radial front crossed with rotating twisted arms
+        const q0 = (d - RMAX * tri) / 0.22;
+        const lon = Math.atan2(y - CV[1], x - CV[0]);
+        const tw = lon * 2 - (d / RMAX) * 5.0 + TAU * lp * 2;
+        const arm = 0.5 + 0.5 * Math.cos(tw);
+        g = Math.exp(-q0 * q0) * (0.25 + 0.75 * arm * arm);
+      } else {
+        const q1 = (d - W0A) / 0.22;
+        const g1 = Math.exp(-q1 * q1);
+        const q2 = (d - W0B) / 0.22;
+        const g2 = W0B < 0 ? 0 : Math.exp(-q2 * q2);
+        g = Math.max(g1, g2);
+      }
+      const amp = fm === 0 ? 0.10 : 0.08;
+      x += DX[i] * g * amp; y += DY[i] * g * amp; z += DZ[i] * g * amp;
+      br = fm === 0 ? 1 + 2 * Math.min(g, 1.2) : 1 + 0.8 * g;
+    }
+    if (fm === 0) {
+      // spin the shell systems in place about the z-axis through the fixed
+      // center (currently invisible: the beam is set to constant brightness,
+      // so the uniform shells show no surface feature — the transform is
+      // kept so a spin cue can be re-added later)
+      const ra = TAU * lp * SHELL_TURNS, ca = Math.cos(ra), sa = Math.sin(ra);
+      const px = x - CV[0], py = y - CV[1];
+      x = CV[0] + px * ca - py * sa;
+      y = CV[1] + px * sa + py * ca;
+      // limb fade: shells dissolve to 100% transparency at their silhouette
+      // edges — fade each point by how face-on its surface normal is to the
+      // camera (normal = radial direction from the center; DIST holds R)
+      const invR = 1 / DIST[i];
+      const nx = (x - CV[0]) * invR, ny = (y - CV[1]) * invR, nz = (z - CV[2]) * invR;
+      const facing = Math.abs(nx * b.fx + ny * b.fy + nz * b.fz);
+      br *= Math.pow(facing, 1.5);
+    }
+    const sx = x * b.rx + y * b.ry + z * b.rz - b.ox;
+    const sy = x * b.ux + y * b.uy + z * b.uz - b.oy;
+    const sz = x * b.fx + y * b.fy + z * b.fz;
+    SXA[i] = sx; SYA[i] = sy; SZA[i] = sz; BRA[i] = br;
+    if (sz < smin) smin = sz;
+    if (sz > smax) smax = sz;
+    // accent-dot blink retired (Calvin 2026-10-05): dots stay on steady
+    ALA[i] = 1;
+  }
+
+  pxd.fill(0);
+  const span = Math.max(smax - smin, 1e-6);
+  const half = S / 2;
+  for (let i = 0; i < TOT; i++) {
+    // wash off (Calvin 2026-10-05 audition): skip the volumetric glow family
+    if (!WASH_ON && FAM[i] === 3) continue;
+    const zn = (smax - SZA[i]) / span;  // 1 = nearest: near geometry renders brighter
+    // shells render flat (no depth shading): constant color and brightness
+    // (Calvin 2026-10-05)
+    const sh = (FAM[i] === 0 ? 1 : (0.65 + 0.35 * zn)) * BRA[i] * (FAM[i] === 2 ? ALA[i] : 1);
+    let r = RR[i] * sh * 255, g = GG[i] * sh * 255, bl = BB[i] * sh * 255;
+    // accent dots punch through the wash; the outer ring renders dimmer
+    // (OUTER_DOT_DIM) and dissolves at the rim (OFADE: 1 → 0 by radius).
+    // dots whose contribution rounds to black leave pixels untouched —
+    // an opaque-black alpha stamp would show as shadow dots under the
+    // rotated duplicate layers.
+    if (FAM[i] === 2) {
+      const dg = DOT_GAIN * (RING[i] === 1 ? OUTER_DOT_DIM : 1) * OFADE[i];
+      r *= dg; g *= dg; bl *= dg;
+      if (r + g + bl < 1.5) continue;
+    }
+    // shells: SHELL_GAIN halves their accumulation strength (opacity)
+    if (FAM[i] === 0) { r *= SHELL_GAIN; g *= SHELL_GAIN; bl *= SHELL_GAIN; }
+    const Xp = Math.round(SXA[i] * SC + half), Yp = Math.round(SYA[i] * SC + half);
+    if (Xp < 0 || Yp < 0 || Xp >= S || Yp >= S) continue;
+    if (FAM[i] === 2) {
+      // accent triangles: upright triangular core + soft radial wash for a 3D glow
+      // (outer ring renders smaller + dimmer)
+      const os = RING[i] === 1 ? OUTER_DOT_SIZE : 1;
+      const RT = 2.6 * DOT_CORE_SCALE * os, W = 16 / 3 * os; // circumradius ≈ area of the old 16/9 disc
+      // upright triangle vertices, screen space (y down): apex up
+      const ax = 0, ay = -RT, bx = -0.8660254 * RT, by = 0.5 * RT,
+            cx = 0.8660254 * RT, cy = 0.5 * RT;
+      for (let dy = -W; dy <= W; dy++) {
+        const yy = Yp + dy;
+        if (yy < 0 || yy >= S) continue;
+        const dxm = Math.floor(Math.sqrt(W * W - dy * dy));
+        for (let dx = -dxm; dx <= dxm; dx++) {
+          const xx = Xp + dx;
+          if (xx < 0 || xx >= S) continue;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          const t = Math.max(0, 1 - d / W), wa = t * t * 0.5; // wash falloff
+          // point-in-triangle: all three edge half-plane tests agree
+          const s1 = (dx - cx) * (ay - cy) - (ax - cx) * (dy - cy);
+          const s2 = (dx - ax) * (by - ay) - (bx - ax) * (dy - ay);
+          const s3 = (dx - bx) * (cy - by) - (cx - bx) * (dy - by);
+          const core = ((s1 >= 0 && s2 >= 0 && s3 >= 0) ||
+                        (s1 <= 0 && s2 <= 0 && s3 <= 0)) ? 1 : 0;
+          const o = (yy * S + xx) * 4;
+          pxd[o] = Math.min(255, pxd[o] + r * (core + wa));
+          pxd[o + 1] = Math.min(255, pxd[o + 1] + g * (core + wa));
+          pxd[o + 2] = Math.min(255, pxd[o + 2] + bl * (core + wa));
+          pxd[o + 3] = 255;
+        }
+      }
+      continue;
+    }
+    if (FAM[i] === 0) {
+      // wave shells: 2x2 so the wavefront reads in the negative space.
+      // points whose contribution rounds to black are skipped, and alpha
+      // tracks brightness — so dim limb points can't stamp opaque-black
+      // squares that the rotated duplicates would reveal as shadow dots.
+      if (r + g + bl < 1.5) continue;
+      const sa = Math.min(255, (r + g + bl) / 3);
+      for (let ddy = 0; ddy < 2; ddy++) for (let ddx = 0; ddx < 2; ddx++) {
+        const xx = Xp + ddx, yy = Yp + ddy;
+        if (xx < 0 || yy < 0 || xx >= S || yy >= S) continue;
+        const o2 = (yy * S + xx) * 4;
+        pxd[o2] = Math.min(255, pxd[o2] + r);
+        pxd[o2 + 1] = Math.min(255, pxd[o2 + 1] + g);
+        pxd[o2 + 2] = Math.min(255, pxd[o2 + 2] + bl);
+        if (sa > pxd[o2 + 3]) pxd[o2 + 3] = sa;
+      }
+      continue;
+    }
+    let o = (Yp * S + Xp) * 4;
+    pxd[o] = Math.min(255, pxd[o] + r);
+    pxd[o + 1] = Math.min(255, pxd[o + 1] + g);
+    pxd[o + 2] = Math.min(255, pxd[o + 2] + bl);
+    pxd[o + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  // soft glow pass: blurred copy of the sharp frame laid back over itself
+  // (reduced 2026-10-05: less glow overall, and the webbing now draws after
+  // it so the threads stay razor sharp instead of being blurred)
+  ctx.save();
+  ctx.filter = "blur(2px)";
+  ctx.globalAlpha = 0.25;
+  ctx.drawImage(cv, 0, 0);
+  ctx.restore();
+  // accent web, ember layer: 1px ember threads joining each dot to its 12
+  // nearest neighbors (drawn at the very bottom of the stack)
+  ctx.save();
+  ctx.globalAlpha = PAL.web12[1];
+  ctx.strokeStyle = PAL.web12[0];
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let s = 0; s < CPAIRS12.length; s++) {
+    const a = CPAIRS12[s][0], b2 = CPAIRS12[s][1];
+    ctx.moveTo(SXA[a] * SC + half, SYA[a] * SC + half);
+    ctx.lineTo(SXA[b2] * SC + half, SYA[b2] * SC + half);
+  }
+  ctx.stroke();
+  ctx.restore();
+  // accent web, magenta layer: 1px light-neon-magenta threads joining each
+  // dot to its 9 nearest neighbors
+  ctx.save();
+  ctx.globalAlpha = PAL.web9[1];
+  ctx.strokeStyle = PAL.web9[0];
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let s = 0; s < CPAIRS9.length; s++) {
+    const a = CPAIRS9[s][0], b2 = CPAIRS9[s][1];
+    ctx.moveTo(SXA[a] * SC + half, SYA[a] * SC + half);
+    ctx.lineTo(SXA[b2] * SC + half, SYA[b2] * SC + half);
+  }
+  ctx.stroke();
+  ctx.restore();
+  // accent web, purple layer: 1px light-neon-purple threads joining each dot
+  // to its 6 nearest neighbors (drawn under the green layer)
+  ctx.save();
+  ctx.globalAlpha = PAL.web6[1];
+  ctx.strokeStyle = PAL.web6[0];
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let s = 0; s < CPAIRS6.length; s++) {
+    const a = CPAIRS6[s][0], b2 = CPAIRS6[s][1];
+    ctx.moveTo(SXA[a] * SC + half, SYA[a] * SC + half);
+    ctx.lineTo(SXA[b2] * SC + half, SYA[b2] * SC + half);
+  }
+  ctx.stroke();
+  ctx.restore();
+  // accent web, green layer: faint threads joining each dot to its 3 nearest
+  // neighbors, redrawn every frame (the viewpoint orbits, so projections move)
+  ctx.save();
+  ctx.globalAlpha = PAL.web3[1];
+  ctx.strokeStyle = PAL.web3[0];
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let s = 0; s < CPAIRS.length; s++) {
+    const a = CPAIRS[s][0], b2 = CPAIRS[s][1];
+    ctx.moveTo(SXA[a] * SC + half, SYA[a] * SC + half);
+    ctx.lineTo(SXA[b2] * SC + half, SYA[b2] * SC + half);
+  }
+  ctx.stroke();
+  ctx.restore();
+
+  // (grade moved to end of frame in preview 38)
+  // duplicated layers: the entire composition re-composited centered at
+  // 90° ccw, 90° cw, 180°, 30° cw, and 60° cw (Calvin 2026-10-05).
+  // each pass draws the current canvas, so later passes also re-rotate
+  // earlier duplicates — redrawn identical pixels are no-ops, leaving
+  // exactly: original + the five rotations, all at DUP_ALPHA.
+  // (canvas positive angle = clockwise, y-axis down)
+  for (const ang of [-Math.PI / 2, Math.PI / 2, Math.PI, Math.PI / 6, Math.PI / 3]) {
+    ctx.save();
+    ctx.globalAlpha = DUP_ALPHA;
+    ctx.translate(half, half);
+    ctx.rotate(ang);
+    ctx.drawImage(cv, -half, -half);
+    ctx.restore();
+  }
+  // final grade — punchiest it gets (Calvin 2026-10-05): full saturation push
+  // on the finished composite. (brightness lifts tested 1.15–1.45 all added
+  // haze; saturation alone keeps the blacks deep and the lines defined.)
+  ctx.save();
+  ctx.filter = "saturate(1.7)";
+  ctx.drawImage(cv, 0, 0);
+  ctx.restore();
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
