@@ -15,7 +15,7 @@
 </head>
 <body>
 <canvas id="c" width="720" height="720"></canvas>
-<div id="cap">luminous geometries #5 · moonlight · 220s loop</div>
+<div id="cap">luminous geometries #5 · moonlight · double · fold reverse</div>
 <script>
 "use strict";
 const GEO = {"token": 5, "hash": "a98b27b14a368e76be9dc90b2003e2450e5c25455244b3c81c20b8eae449aad8", "S": 720, "mod": 240, "traits": {"density": "sparse", "rings": 3, "dotGrid": "square", "trains": 2, "accent": "restrained", "hue": ["amber"], "grid": "fusion"}, "foci": [{"x": 43.32498794823795, "y": 569.0859553915957, "bi": 2, "bj": 3}, {"x": 105.441558772843, "y": 800.9081537009721, "bi": 3, "bj": 3}], "radii": [{"r": 240, "n": 1}, {"r": 339.4112549695428, "n": 2}, {"r": 960, "n": 16}], "dots": [{"x": 213.0306154330093, "y": 275.1471862576143, "color": "#8b2bff"}, {"x": 275.14718625761424, "y": 213.03061543300925, "color": "#8b2bff"}, {"x": 190.29437251522853, "y": 20.588745030457233, "color": "#00ff66"}, {"x": 360, "y": 190.2943725152286, "color": "#ff2bd6"}, {"x": 444.8528137423857, "y": 213.0306154330094, "color": "#b6ff00"}, {"x": 506.96938456699064, "y": 275.14718625761424, "color": "#8b2bff"}, {"x": 529.7056274847714, "y": 360, "color": "#8b2bff"}, {"x": 506.96938456699075, "y": 444.8528137423858, "color": "#2e6bff"}, {"x": 444.85281374238576, "y": 506.9693845669906, "color": "#00f0ff"}, {"x": 360, "y": 529.7056274847714, "color": "#8b2bff"}, {"x": 275.1471862576143, "y": 506.9693845669907, "color": "#ff2bd6"}, {"x": 213.03061543300933, "y": 444.8528137423857, "color": "#00f0ff"}, {"x": 105.44155877284271, "y": -80.90815370097201, "color": "#ff2bd6"}, {"x": -80.90815370097195, "y": 614.5584412271572, "color": "#ff2bd6"}, {"x": 614.5584412271572, "y": 800.908153700972, "color": "#b6ff00"}, {"x": 614.558441227157, "y": -80.9081537009721, "color": "#b6ff00"}, {"x": 800.908153700972, "y": 105.44155877284282, "color": "#8b2bff"}, {"x": -80.9081537009721, "y": 105.44155877284302, "color": "#00ff66"}, {"x": 105.441558772843, "y": 800.9081537009721, "color": "#2e6bff"}, {"x": 800.908153700972, "y": 614.558441227157, "color": "#ff2bd6"}, {"x": -72.58611120645025, "y": 622.8804837216788, "color": "#00ff66"}, {"x": 97.11951627832116, "y": 792.5861112064503, "color": "#00ff66"}, {"x": 569.0859553915958, "y": 676.6750120517622, "color": "#00ff66"}, {"x": 20.588745030457023, "y": 190.2943725152287, "color": "#8b2bff"}, {"x": 676.675012051762, "y": 150.91404460840403, "color": "#00f0ff"}, {"x": 43.324987948237876, "y": 150.91404460840425, "color": "#2e6bff"}, {"x": 150.91404460840442, "y": 676.6750120517622, "color": "#8b2bff"}, {"x": 337.2637570822191, "y": -18.791582876367073, "color": "#2e6bff"}, {"x": 529.7056274847714, "y": 20.588745030457176, "color": "#b6ff00"}, {"x": 699.4112549695428, "y": 190.2943725152286, "color": "#00ff66"}, {"x": 738.7915828763671, "y": 337.2637570822192, "color": "#8b2bff"}, {"x": 738.7915828763671, "y": 382.7362429177807, "color": "#b6ff00"}, {"x": 699.4112549695428, "y": 529.7056274847714, "color": "#ff2bd6"}, {"x": 190.2943725152286, "y": 699.4112549695428, "color": "#2e6bff"}, {"x": 529.7056274847714, "y": 699.4112549695428, "color": "#00f0ff"}, {"x": 569.0859553915956, "y": 43.32498794823783, "color": "#2e6bff"}, {"x": -18.791582876367045, "y": 382.7362429177807, "color": "#00ff66"}, {"x": 676.6750120517622, "y": 569.0859553915955, "color": "#2e6bff"}, {"x": 337.26375708221934, "y": 738.7915828763671, "color": "#2e6bff"}, {"x": 382.73624291778066, "y": -18.791582876367045, "color": "#00f0ff"}, {"x": 150.91404460840428, "y": 43.324987948238004, "color": "#00f0ff"}, {"x": -18.791582876367045, "y": 337.26375708221934, "color": "#00f0ff"}, {"x": 20.588745030457215, "y": 529.7056274847714, "color": "#8b2bff"}, {"x": 43.32498794823795, "y": 569.0859553915957, "color": "#b6ff00"}, {"x": 382.73624291778094, "y": 738.7915828763669, "color": "#2e6bff"}, {"x": 190.29437251522853, "y": 360.00000000000006, "color": "#ff2bd6"}], "layerAngles": [1.308996938995747, 1.8325957145940457, 2.356194490192345], "layerTints": ["#99f6e4", "#a5f3fc", "#c4b5fd"], "dotRings": [12, 21, 33, 33]};
@@ -146,12 +146,16 @@ const MOTIONS = {
   genesis: { loop: 220, foldTurns: 1 },   // locked (Calvin 2026-10-06)
 };
 function deriveTraits(hash) {
-  if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis" };
-  const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16);
+  if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis", waveMode: 4, foldDir: 1 };
+  const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16), b2 = parseInt(hash.slice(4, 6), 16);
   const mn = Object.keys(MOTIONS);
   // weighted: Sunlight 40 / Moonlight 30 / Midnight 20 / SolarEclipse 5 / LunarEclipse 5 (Calvin 2026-10-06)
   const palette = b0 < 103 ? "Sunlight" : b0 < 180 ? "Moonlight" : b0 < 231 ? "Midnight" : b0 < 244 ? "SolarEclipse" : "LunarEclipse";
-  return { palette, motion: mn[b1 % mn.length] };
+  // wave mode trait (Calvin 2026-10-06): Still 40 / Double 20 / Spiral 40 (pulse retired)
+  const waveMode = b1 < 103 ? 4 : b1 < 154 ? 3 : 2;
+  // fold direction trait (Calvin 2026-10-06): 50/50 forward/reverse
+  const foldDir = b2 % 2 === 0 ? 1 : -1;
+  return { palette, motion: mn[b1 % mn.length], waveMode, foldDir };
 }
 // Public traits for metadata/listing — palette only. Motion and all
 // hash-derived details (dot selection, z-depths) are hidden (Calvin 2026-10-05).
@@ -171,7 +175,7 @@ const PAL = (() => {
     eclipse: p.eclipse, eclipseColor: p.eclipseColor, eclipseAlpha: p.eclipseAlpha, eclipseHalf: p.eclipseHalf, // occluder disc (Calvin 2026-10-06)
   };
 })();
-const MOT = MOTIONS[TRAITS.motion];
+const MOT = Object.assign({}, MOTIONS[TRAITS.motion], { foldTurns: MOTIONS[TRAITS.motion].foldTurns * TRAITS.foldDir });
 const LINE = hexRgb("#bfffd2"); // light neon-green linework (midnight)
 
 // foci: x/y from the engine, z hash-seeded — then all brought to the exact
@@ -599,7 +603,7 @@ const SHELL_GAIN = PAL.shellGain || 1.0; // palette-driven (Calvin 2026-10-06)
 // 3 double (two fronts crossing), 4 off, 5 spiral on shells only
 // (stars stay still). Calvin retired the spiral 2026-10-05: shells hold
 // constant color and brightness — back to 4 (still).
-const WAVE_MODE = 4;
+const WAVE_MODE = TRAITS.waveMode; // hash trait (Calvin 2026-10-06)
 // shell spin: turns per 16s loop about the z-axis through the fixed center.
 // the camera orbits once per loop, so 2 turns read as 1 net turn on screen.
 const SHELL_TURNS = 2;
@@ -617,6 +621,9 @@ const SXA = new Float32Array(TOT), SYA = new Float32Array(TOT),
       SZA = new Float32Array(TOT), BRA = new Float32Array(TOT), ALA = new Float32Array(TOT);
 const t0 = performance.now();
 
+// offscreen canvas for heart blur (reused each frame)
+const heartBlurCv = document.createElement("canvas");
+const heartBlurCtx = heartBlurCv.getContext("2d");
 function draw(now) {
   const t = (now - t0) / 1000;
   const lp = (t % MOT.loop) / MOT.loop; // trait-driven loop (genesis: 220s)
@@ -658,9 +665,16 @@ function draw(now) {
         const arm = 0.5 + 0.5 * Math.cos(tw);
         g = Math.exp(-q0 * q0) * (0.25 + 0.75 * arm * arm);
       } else {
-        const q1 = (d - W0A) / 0.22;
+        // pulse (mode 1): wrap the front distance so the train flows
+        // continuously — no teleport when p wraps (Calvin 2026-10-06)
+        let dw1 = Math.abs(d - W0A), dw2 = Math.abs(d - W0B);
+        if (WAVE_MODE === 1) {
+          dw1 = dw1 % RMAX; if (dw1 > RMAX / 2) dw1 = RMAX - dw1;
+          dw2 = dw2 % RMAX; if (dw2 > RMAX / 2) dw2 = RMAX - dw2;
+        }
+        const q1 = dw1 / 0.22;
         const g1 = Math.exp(-q1 * q1);
-        const q2 = (d - W0B) / 0.22;
+        const q2 = dw2 / 0.22;
         const g2 = W0B < 0 ? 0 : Math.exp(-q2 * q2);
         g = Math.max(g1, g2);
       }
@@ -717,7 +731,8 @@ function draw(now) {
       if (r + g + bl < 1.5) continue;
     }
     // shells: SHELL_GAIN halves their accumulation strength (opacity)
-    if (FAM[i] === 0) { r *= SHELL_GAIN; g *= SHELL_GAIN; bl *= SHELL_GAIN; }
+    // heart exempt: renders at 100% (Calvin 2026-10-06)
+    if (FAM[i] === 0 && !HEART[i]) { r *= SHELL_GAIN; g *= SHELL_GAIN; bl *= SHELL_GAIN; }
     const Xp = Math.round(SXA[i] * SC + half), Yp = Math.round(SYA[i] * SC + half);
     if (Xp < 0 || Yp < 0 || Xp >= S || Yp >= S) continue;
     if (FAM[i] === 2) {
@@ -864,6 +879,18 @@ function draw(now) {
   ctx.filter = "saturate(1.7)";
   ctx.drawImage(cv, 0, 0);
   ctx.restore();
+  // central sphere blur: soften the heart with a blurred composite (Calvin 2026-10-06)
+  {
+    const hr = HEART_AR * SC * 2.0; // heart radius with margin
+    const hsz = Math.ceil(hr * 2);
+    if (heartBlurCv.width !== hsz) { heartBlurCv.width = heartBlurCv.height = hsz; }
+    heartBlurCtx.clearRect(0, 0, hsz, hsz);
+    heartBlurCtx.drawImage(cv, half - hr, half - hr, hsz, hsz, 0, 0, hsz, hsz);
+    ctx.save();
+    ctx.filter = "blur(8px)";
+    ctx.drawImage(heartBlurCv, half - hr, half - hr);
+    ctx.restore();
+  }
   // eclipse occluder: solid disc at the heart, drawn last (Calvin 2026-10-06)
   if (PAL.eclipse) {
     ctx.save();
