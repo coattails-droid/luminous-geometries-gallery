@@ -15,7 +15,7 @@
 </head>
 <body>
 <canvas id="c" width="720" height="720"></canvas>
-<div id="cap">luminous geometries #6 · moonlight · 220s loop</div>
+<div id="cap">luminous geometries #6 · moonlight · double · fold reverse</div>
 <script>
 "use strict";
 const GEO = {"token": 6, "hash": "8c882161c2c9b1d4aae743db7f893b46bc6b0b67e2819b96834987ef001ce7bd", "S": 720, "mod": 240, "traits": {"density": "sparse", "rings": 3, "dotGrid": "circle", "trains": 2, "accent": "restrained", "hue": ["ember"], "grid": "fusion"}, "foci": [{"x": 105.441558772843, "y": 800.9081537009721, "bi": 3, "bj": 3}, {"x": 43.32498794823795, "y": 569.0859553915957, "bi": 2, "bj": 3}], "radii": [{"r": 240, "n": 1}, {"r": 480, "n": 4}, {"r": 720, "n": 9}], "dots": [{"x": 199.57251797121276, "y": 330.2533577091227, "color": "#00ff66"}, {"x": 111.12644760467799, "y": 94.47573779651495, "color": "#ff2bd6"}, {"x": 239.31940382357155, "y": 131.51892844732865, "color": "#2e6bff"}, {"x": 496.2698560060976, "y": 10.472187806828618, "color": "#b6ff00"}, {"x": 420.4487634530178, "y": 273.06306011791236, "color": "#00f0ff"}, {"x": 580.2196969353123, "y": 260.6684475700721, "color": "#2e6bff"}, {"x": 481.06611785097454, "y": 373.49314635184083, "color": "#2e6bff"}, {"x": 422.28875871715223, "y": 440.374623558233, "color": "#2e6bff"}, {"x": 513.550104642289, "y": 662.8498803187641, "color": "#00f0ff"}, {"x": 281.17479153294425, "y": 600.945134360637, "color": "#2e6bff"}, {"x": 275.1471862576143, "y": 506.9693845669907, "color": "#2e6bff"}, {"x": 318.1795081874429, "y": 370.6534159599385, "color": "#00ff66"}, {"x": -80.00527046362889, "y": 774.6363860780405, "color": "#2e6bff"}, {"x": 738.0468598269796, "y": 755.2361199257417, "color": "#ff2bd6"}, {"x": 82.4206283220304, "y": 805.6190400999498, "color": "#00f0ff"}, {"x": 755.6765375392324, "y": 667.8473669462836, "color": "#00ff66"}, {"x": -39.809055963096114, "y": 610.1912924788667, "color": "#b6ff00"}, {"x": 166.65524636010477, "y": 774.6363860780403, "color": "#00ff66"}, {"x": 762.3560597659188, "y": 556.9901909013341, "color": "#2e6bff"}, {"x": 4.065296102494543, "y": 91.27431500853463, "color": "#00ff66"}, {"x": 475.3032707447049, "y": 777.0546542444953, "color": "#ff2bd6"}, {"x": 344.9318126176662, "y": 785.4627035367399, "color": "#8b2bff"}, {"x": 576.7171388897428, "y": 712.0079514854713, "color": "#ff2bd6"}, {"x": -45.96867321246088, "y": 346.6233378109857, "color": "#ff2bd6"}, {"x": 743.4447166590389, "y": 469.06885129005263, "color": "#8b2bff"}, {"x": 233.35092453925967, "y": 715.6352431900276, "color": "#8b2bff"}, {"x": 72.25931760152713, "y": 563.2990894609378, "color": "#b6ff00"}, {"x": 583.5646940791376, "y": 94.30781722912587, "color": "#ff2bd6"}, {"x": 698.1327142710066, "y": 393.6307539257501, "color": "#ff2bd6"}, {"x": 649.3808306835226, "y": 181.97149931457523, "color": "#ff2bd6"}, {"x": 315.13932996554774, "y": 684.497314895034, "color": "#b6ff00"}, {"x": 38.08734564039516, "y": 329.42866177383837, "color": "#2e6bff"}, {"x": 159.6709445313945, "y": 567.128747496996, "color": "#b6ff00"}, {"x": 643.530524460578, "y": 323.7570391375363, "color": "#2e6bff"}, {"x": 120.22878597200784, "y": 341.7537107210413, "color": "#00ff66"}, {"x": 478.86945597212514, "y": 186.31699326492043, "color": "#ff2bd6"}, {"x": 483.6004256603397, "y": 506.18946428986686, "color": "#00f0ff"}, {"x": 232.0210301694776, "y": 420.96920335110127, "color": "#2e6bff"}], "layerAngles": [1.308996938995747, 1.8325957145940457, 2.356194490192345], "layerTints": ["#99f6e4", "#a5f3fc", "#c4b5fd"], "dotRings": [12, 21, 33, 33]};
@@ -146,12 +146,16 @@ const MOTIONS = {
   genesis: { loop: 220, foldTurns: 1 },   // locked (Calvin 2026-10-06)
 };
 function deriveTraits(hash) {
-  if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis" };
-  const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16);
+  if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis", waveMode: 4, foldDir: 1 };
+  const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16), b2 = parseInt(hash.slice(4, 6), 16);
   const mn = Object.keys(MOTIONS);
   // weighted: Sunlight 40 / Moonlight 30 / Midnight 20 / SolarEclipse 5 / LunarEclipse 5 (Calvin 2026-10-06)
   const palette = b0 < 103 ? "Sunlight" : b0 < 180 ? "Moonlight" : b0 < 231 ? "Midnight" : b0 < 244 ? "SolarEclipse" : "LunarEclipse";
-  return { palette, motion: mn[b1 % mn.length] };
+  // wave mode trait (Calvin 2026-10-06): Still 40 / Double 20 / Spiral 40 (pulse retired)
+  const waveMode = b1 < 103 ? 4 : b1 < 154 ? 3 : 2;
+  // fold direction trait (Calvin 2026-10-06): 50/50 forward/reverse
+  const foldDir = b2 % 2 === 0 ? 1 : -1;
+  return { palette, motion: mn[b1 % mn.length], waveMode, foldDir };
 }
 // Public traits for metadata/listing — palette only. Motion and all
 // hash-derived details (dot selection, z-depths) are hidden (Calvin 2026-10-05).
@@ -171,7 +175,7 @@ const PAL = (() => {
     eclipse: p.eclipse, eclipseColor: p.eclipseColor, eclipseAlpha: p.eclipseAlpha, eclipseHalf: p.eclipseHalf, // occluder disc (Calvin 2026-10-06)
   };
 })();
-const MOT = MOTIONS[TRAITS.motion];
+const MOT = Object.assign({}, MOTIONS[TRAITS.motion], { foldTurns: MOTIONS[TRAITS.motion].foldTurns * TRAITS.foldDir });
 const LINE = hexRgb("#bfffd2"); // light neon-green linework (midnight)
 
 // foci: x/y from the engine, z hash-seeded — then all brought to the exact
@@ -599,7 +603,7 @@ const SHELL_GAIN = PAL.shellGain || 1.0; // palette-driven (Calvin 2026-10-06)
 // 3 double (two fronts crossing), 4 off, 5 spiral on shells only
 // (stars stay still). Calvin retired the spiral 2026-10-05: shells hold
 // constant color and brightness — back to 4 (still).
-const WAVE_MODE = 4;
+const WAVE_MODE = TRAITS.waveMode; // hash trait (Calvin 2026-10-06)
 // shell spin: turns per 16s loop about the z-axis through the fixed center.
 // the camera orbits once per loop, so 2 turns read as 1 net turn on screen.
 const SHELL_TURNS = 2;
@@ -617,6 +621,9 @@ const SXA = new Float32Array(TOT), SYA = new Float32Array(TOT),
       SZA = new Float32Array(TOT), BRA = new Float32Array(TOT), ALA = new Float32Array(TOT);
 const t0 = performance.now();
 
+// offscreen canvas for heart blur (reused each frame)
+const heartBlurCv = document.createElement("canvas");
+const heartBlurCtx = heartBlurCv.getContext("2d");
 function draw(now) {
   const t = (now - t0) / 1000;
   const lp = (t % MOT.loop) / MOT.loop; // trait-driven loop (genesis: 220s)
@@ -658,9 +665,16 @@ function draw(now) {
         const arm = 0.5 + 0.5 * Math.cos(tw);
         g = Math.exp(-q0 * q0) * (0.25 + 0.75 * arm * arm);
       } else {
-        const q1 = (d - W0A) / 0.22;
+        // pulse (mode 1): wrap the front distance so the train flows
+        // continuously — no teleport when p wraps (Calvin 2026-10-06)
+        let dw1 = Math.abs(d - W0A), dw2 = Math.abs(d - W0B);
+        if (WAVE_MODE === 1) {
+          dw1 = dw1 % RMAX; if (dw1 > RMAX / 2) dw1 = RMAX - dw1;
+          dw2 = dw2 % RMAX; if (dw2 > RMAX / 2) dw2 = RMAX - dw2;
+        }
+        const q1 = dw1 / 0.22;
         const g1 = Math.exp(-q1 * q1);
-        const q2 = (d - W0B) / 0.22;
+        const q2 = dw2 / 0.22;
         const g2 = W0B < 0 ? 0 : Math.exp(-q2 * q2);
         g = Math.max(g1, g2);
       }
@@ -717,7 +731,8 @@ function draw(now) {
       if (r + g + bl < 1.5) continue;
     }
     // shells: SHELL_GAIN halves their accumulation strength (opacity)
-    if (FAM[i] === 0) { r *= SHELL_GAIN; g *= SHELL_GAIN; bl *= SHELL_GAIN; }
+    // heart exempt: renders at 100% (Calvin 2026-10-06)
+    if (FAM[i] === 0 && !HEART[i]) { r *= SHELL_GAIN; g *= SHELL_GAIN; bl *= SHELL_GAIN; }
     const Xp = Math.round(SXA[i] * SC + half), Yp = Math.round(SYA[i] * SC + half);
     if (Xp < 0 || Yp < 0 || Xp >= S || Yp >= S) continue;
     if (FAM[i] === 2) {
@@ -864,6 +879,18 @@ function draw(now) {
   ctx.filter = "saturate(1.7)";
   ctx.drawImage(cv, 0, 0);
   ctx.restore();
+  // central sphere blur: soften the heart with a blurred composite (Calvin 2026-10-06)
+  {
+    const hr = HEART_AR * SC * 2.0; // heart radius with margin
+    const hsz = Math.ceil(hr * 2);
+    if (heartBlurCv.width !== hsz) { heartBlurCv.width = heartBlurCv.height = hsz; }
+    heartBlurCtx.clearRect(0, 0, hsz, hsz);
+    heartBlurCtx.drawImage(cv, half - hr, half - hr, hsz, hsz, 0, 0, hsz, hsz);
+    ctx.save();
+    ctx.filter = "blur(8px)";
+    ctx.drawImage(heartBlurCv, half - hr, half - hr);
+    ctx.restore();
+  }
   // eclipse occluder: solid disc at the heart, drawn last (Calvin 2026-10-06)
   if (PAL.eclipse) {
     ctx.save();
