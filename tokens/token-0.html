@@ -149,8 +149,8 @@ function deriveTraits(hash) {
   if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis" };
   const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16);
   const mn = Object.keys(MOTIONS);
-  // equal fifths across five palettes (Calvin 2026-10-06)
-  const palette = ["Sunlight", "Moonlight", "Midnight", "LunarEclipse", "SolarEclipse"][b0 % 5];
+  // weighted: Sunlight 40 / Moonlight 30 / Midnight 20 / SolarEclipse 5 / LunarEclipse 5 (Calvin 2026-10-06)
+  const palette = b0 < 103 ? "Sunlight" : b0 < 180 ? "Moonlight" : b0 < 231 ? "Midnight" : b0 < 244 ? "SolarEclipse" : "LunarEclipse";
   return { palette, motion: mn[b1 % mn.length] };
 }
 // Public traits for metadata/listing — palette only. Motion and all
