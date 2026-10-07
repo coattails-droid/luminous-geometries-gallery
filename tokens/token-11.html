@@ -115,7 +115,7 @@ const PALETTES = {
     dotRamp: ["#bfffd2", "#3dff73", "#fc6cdc", "#9aa8ff", "#6a7adf"],
     wash: ["#fbbf24", "#fb7185", "#fb923c"], washMul: 0.64,
     shellGain: 7.0,
-    eclipse: 1.15, eclipseColor: "#000", eclipseHalf: "left", // half black disc covers heart left edge (Calvin 2026-10-06)
+    eclipse: 1.3, eclipseColor: "#000", eclipseHalf: "left", eclipseBlur: 6, // half black disc covers heart left edge (Calvin 2026-10-07)
   },
   // "LunarEclipse" — smoked chrome + black occluder (Calvin 2026-10-06, locked)
   LunarEclipse: {
@@ -902,11 +902,14 @@ function draw(now) {
     eg.addColorStop(1, "#1a0800");
     if (PAL.eclipseHalf) {
       // half disc: left half only, right cut away (mirrored, Calvin 2026-10-06)
+      // soft blur on the disc edge (Calvin 2026-10-07)
+      if (PAL.eclipseBlur) ctx.filter = `blur(${PAL.eclipseBlur}px)`;
       ctx.fillStyle = PAL.eclipseColor || "#000";
       ctx.beginPath();
       ctx.arc(half, half, er, Math.PI / 2, Math.PI * 3 / 2);
       ctx.closePath();
       ctx.fill();
+      ctx.filter = "none";
     } else {
       ctx.fillStyle = eg;
       ctx.beginPath();
