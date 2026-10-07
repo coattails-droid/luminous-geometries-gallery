@@ -15,7 +15,7 @@
 </head>
 <body>
 <canvas id="c" width="720" height="720"></canvas>
-<div id="cap">luminous geometries #14 · sunlight · double · fold forward</div>
+<div id="cap">luminous geometries #14 · sunlight · spiral · folding out</div>
 <script>
 "use strict";
 const GEO = {"token": 14, "hash": "2d97d2f7fb54223796a6895281f292cc081306c43637a11049b972eea4e30a76", "S": 720, "mod": 144, "traits": {"density": "dense", "rings": 9, "dotGrid": "square", "trains": 2, "accent": "bold", "hue": ["ember", "amber", "coral"], "grid": "fusion"}, "foci": [{"x": 309.08831175456856, "y": 448.1816307401944, "bi": 3, "bj": 3}, {"x": 132.72505027417978, "y": 346.3582542493316, "bi": 2, "bj": 4}], "radii": [{"r": 144, "n": 1}, {"r": 203.6467529817257, "n": 2}, {"r": 288, "n": 4}, {"r": 321.99378875996973, "n": 5}, {"r": 407.2935059634514, "n": 8}, {"r": 455.36798306424663, "n": 10}, {"r": 519.1993836668145, "n": 13}, {"r": 576, "n": 16}, {"r": 593.7272100889431, "n": 17}], "dots": [{"x": 258.17662350913713, "y": 360.00000000000006, "color": "#ff2bd6"}, {"x": 271.8183692598056, "y": 309.08831175456856, "color": "#8b2bff"}, {"x": 353.1791271246659, "y": 283.63246763185293, "color": "#b6ff00"}, {"x": 390.44906961942877, "y": 144.53914864622703, "color": "#2e6bff"}, {"x": 410.91168824543144, "y": 271.8183692598056, "color": "#2e6bff"}, {"x": 429.54665949281286, "y": 327.72328300195005, "color": "#00f0ff"}, {"x": 461.82337649086287, "y": 360, "color": "#2e6bff"}, {"x": 417.7325611207657, "y": 422.72578661747855, "color": "#ff2bd6"}, {"x": 404.0908153700972, "y": 473.63747486291027, "color": "#ff2bd6"}, {"x": 327.72328300195005, "y": 429.54665949281286, "color": "#2e6bff"}, {"x": 322.73005750523697, "y": 397.2699424947629, "color": "#2e6bff"}, {"x": 278.6392421351398, "y": 385.4558441227157, "color": "#00ff66"}, {"x": -65.92847721083297, "y": 73.16484177479305, "color": "#8b2bff"}, {"x": 646.8351582252071, "y": 785.9284772108329, "color": "#2e6bff"}, {"x": 54.52987052741139, "y": 767.2935059634515, "color": "#2e6bff"}, {"x": -47.293505963451366, "y": 665.4701294725886, "color": "#8b2bff"}, {"x": 665.4701294725885, "y": 767.2935059634515, "color": "#8b2bff"}, {"x": -47.29350596345148, "y": 54.52987052741156, "color": "#8b2bff"}, {"x": 54.52987052741145, "y": -47.293505963451366, "color": "#2e6bff"}, {"x": 767.2935059634514, "y": 54.52987052741146, "color": "#ff2bd6"}, {"x": 767.2935059634514, "y": 665.4701294725885, "color": "#8b2bff"}, {"x": 665.4701294725885, "y": -47.29350596345131, "color": "#2e6bff"}, {"x": 22.253153529361555, "y": 735.0167889654015, "color": "#00f0ff"}, {"x": 735.0167889654012, "y": 22.25315352936144, "color": "#b6ff00"}, {"x": 250.45847819354904, "y": 785.7453889936655, "color": "#ff2bd6"}, {"x": 51.36429240931966, "y": 650.0007363432991, "color": "#b6ff00"}, {"x": -47.29350596345148, "y": 461.823376490863, "color": "#b6ff00"}, {"x": -43.63821120620909, "y": 475.4651222415316, "color": "#00f0ff"}, {"x": 58.185165284653806, "y": 651.8283837219203, "color": "#2e6bff"}, {"x": -47.29350596345148, "y": 258.17662350913724, "color": "#ff2bd6"}, {"x": 767.2935059634515, "y": 461.82337649086276, "color": "#00f0ff"}, {"x": 461.82337649086287, "y": -47.293505963451366, "color": "#b6ff00"}, {"x": 244.5348777584685, "y": -43.638211206209036, "color": "#00f0ff"}, {"x": 651.8283837219201, "y": 58.18516528465372, "color": "#00f0ff"}, {"x": 661.8148347153461, "y": 68.17161627807977, "color": "#8b2bff"}, {"x": 767.2935059634514, "y": 258.17662350913713, "color": "#00f0ff"}, {"x": 651.8283837219202, "y": 661.8148347153461, "color": "#2e6bff"}, {"x": 244.5348777584688, "y": 763.6382112062091, "color": "#2e6bff"}, {"x": 258.17662350913713, "y": 767.2935059634514, "color": "#b6ff00"}, {"x": 258.1766235091371, "y": -47.29350596345131, "color": "#8b2bff"}, {"x": 475.46512224153116, "y": -43.63821120620908, "color": "#b6ff00"}, {"x": 68.17161627807977, "y": 58.18516528465392, "color": "#8b2bff"}, {"x": 58.18516528465372, "y": 68.17161627807998, "color": "#00f0ff"}, {"x": 763.638211206209, "y": 244.53487775846858, "color": "#8b2bff"}, {"x": -43.638211206209064, "y": 244.5348777584688, "color": "#00f0ff"}, {"x": 68.17161627807997, "y": 661.8148347153463, "color": "#ff2bd6"}, {"x": 661.8148347153463, "y": 651.82838372192, "color": "#ff2bd6"}, {"x": 461.823376490863, "y": 767.2935059634513, "color": "#2e6bff"}, {"x": 763.638211206209, "y": 475.46512224153116, "color": "#00f0ff"}, {"x": 475.4651222415315, "y": 763.6382112062088, "color": "#8b2bff"}, {"x": -15.016788965401474, "y": 494.10009348891276, "color": "#00f0ff"}, {"x": 507.74183923958117, "y": 721.3750432147331, "color": "#00f0ff"}, {"x": 748.4754464989028, "y": 330.4482028208251, "color": "#ff2bd6"}, {"x": 191.35488383519927, "y": 8.794495995860323, "color": "#b6ff00"}, {"x": 705.5332713947612, "y": 192.87475398216372, "color": "#8b2bff"}, {"x": 35.894899280029904, "y": 174.98821826565586, "color": "#2e6bff"}, {"x": -13.189141586780323, "y": 361.82764737862135, "color": "#b6ff00"}, {"x": 682.277453341349, "y": 548.177359852436, "color": "#8b2bff"}, {"x": 545.0117817343443, "y": 684.10510071997, "color": "#2e6bff"}, {"x": 197.27848427027968, "y": 689.0983262166833, "color": "#00ff66"}, {"x": 522.7215157297203, "y": 30.901673783316824, "color": "#00f0ff"}, {"x": 563.6467529817257, "y": 54.52987052741146, "color": "#00ff66"}, {"x": 54.52987052741139, "y": 156.35324701827437, "color": "#00ff66"}, {"x": 30.901673783316852, "y": 197.2784842702797, "color": "#00f0ff"}, {"x": 30.901673783316937, "y": 522.7215157297205, "color": "#b6ff00"}, {"x": 563.6467529817256, "y": 665.4701294725886, "color": "#00ff66"}, {"x": 383.6281967440944, "y": -6.368268711446092, "color": "#8b2bff"}, {"x": 197.27848427027953, "y": 30.90167378331696, "color": "#ff2bd6"}, {"x": 156.35324701827432, "y": 54.52987052741145, "color": "#00f0ff"}, {"x": 665.4701294725885, "y": 156.35324701827432, "color": "#ff2bd6"}, {"x": 689.0983262166831, "y": 197.27848427027953, "color": "#2e6bff"}, {"x": -6.368268711446092, "y": 336.37180325590555, "color": "#00f0ff"}, {"x": 689.0983262166832, "y": 522.7215157297202, "color": "#b6ff00"}, {"x": 54.529870527411504, "y": 563.6467529817257, "color": "#00f0ff"}, {"x": 156.35324701827426, "y": 665.4701294725885, "color": "#00f0ff"}, {"x": 522.7215157297204, "y": 689.0983262166831, "color": "#8b2bff"}, {"x": 336.3718032559054, "y": -6.368268711446056, "color": "#00f0ff"}, {"x": 726.368268711446, "y": 336.3718032559054, "color": "#8b2bff"}, {"x": -6.368268711446035, "y": 383.6281967440946, "color": "#00ff66"}, {"x": 665.4701294725885, "y": 563.6467529817256, "color": "#ff2bd6"}, {"x": 383.6281967440946, "y": 726.368268711446, "color": "#2e6bff"}, {"x": 726.368268711446, "y": 383.62819674409445, "color": "#b6ff00"}, {"x": 336.37180325590566, "y": 726.3682687114459, "color": "#00ff66"}, {"x": 695.9191990920174, "y": 497.2656716070045, "color": "#8b2bff"}, {"x": 241.36929964037688, "y": 700.9124245887305, "color": "#8b2bff"}, {"x": 427.7190121141916, "y": 5.445829660601191, "color": "#ff2bd6"}, {"x": 633.1934124745385, "y": 124.07653002022431, "color": "#ff2bd6"}, {"x": 124.07653002022431, "y": 633.1934124745385, "color": "#2e6bff"}, {"x": 88.63423490408275, "y": 510.90741735767335, "color": "#ff2bd6"}, {"x": 512.7350647362944, "y": 624.5448922205833, "color": "#8b2bff"}, {"x": 360, "y": 665.4701294725886, "color": "#00ff66"}, {"x": 512.7350647362942, "y": 95.45510777941674, "color": "#00ff66"}, {"x": 95.45510777941678, "y": 512.7350647362944, "color": "#8b2bff"}, {"x": 207.26493526370578, "y": 624.5448922205833, "color": "#2e6bff"}, {"x": 207.26493526370558, "y": 95.45510777941684, "color": "#b6ff00"}, {"x": 95.45510777941675, "y": 207.2649352637058, "color": "#2e6bff"}, {"x": 624.5448922205832, "y": 207.26493526370564, "color": "#8b2bff"}, {"x": 54.529870527411504, "y": 360, "color": "#ff2bd6"}, {"x": 665.4701294725885, "y": 360, "color": "#ff2bd6"}], "layerAngles": [1.308996938995747, 1.8325957145940457, 2.356194490192345], "layerTints": ["#99f6e4", "#a5f3fc", "#c4b5fd"], "dotRings": [12, 21, 33, 33]};
@@ -115,19 +115,20 @@ const PALETTES = {
     dotRamp: ["#bfffd2", "#3dff73", "#fc6cdc", "#9aa8ff", "#6a7adf"],
     wash: ["#fbbf24", "#fb7185", "#fb923c"], washMul: 0.64,
     shellGain: 7.0,
-    eclipse: 1.15, eclipseColor: "#000", eclipseHalf: "left", // half black disc covers heart left edge (Calvin 2026-10-06)
+    eclipse: 1.3, eclipseColor: "#000", eclipseHalf: "left", eclipseBlur: 6, // half black disc covers heart left edge (Calvin 2026-10-07)
   },
   // "LunarEclipse" — smoked chrome + black occluder (Calvin 2026-10-06, locked)
   LunarEclipse: {
     shell: "#e8ecf1",
-    web3: ["#a8b0bd", 0.112], web6: ["#6e7683", 0.124],
-    web9: ["#4a505c", 0.089], web12: ["#3a3f4a", 0.074],
+    web3: ["#a82800", 0.08], web6: ["#147a70", 0.09],
+    web9: ["#0e4a44", 0.065], web12: ["#a82800", 0.055], // blood red on inner+outer webs (Calvin 2026-10-07)
+    webGrad: ["#a82800", "#2fd8c0", "#1fa898", "#147a6e", "#a82800"], // blood red inner+outer, teal middle (Calvin 2026-10-07)
     heart: "#b7b9bb",
     lattice: "#c0c5ce", latticeMul: 0.72,
     dotRamp: ["#e8ecf1", "#a8b0bd", "#6e7683", "#ffffff", "#8a919e"],
     wash: ["#8a919e", "#c0c5ce", "#5a6270"], washMul: 0.64,
     shellGain: 1.5,
-    eclipse: 1.0, eclipseColor: "#7a2400", eclipseAlpha: 0.5, // deep dark amber disc
+    eclipse: 1.15, eclipseColor: "#a82800", eclipseAlpha: 1.0, // blood red disc, full opacity (Calvin 2026-10-07)
   },
   // "SolarEclipse" — red field, yellow sun, black occluder (Calvin 2026-10-06, locked)
   SolarEclipse: {
@@ -143,19 +144,20 @@ const PALETTES = {
   },
 };
 const MOTIONS = {
-  genesis: { loop: 220, foldTurns: 1 },   // locked (Calvin 2026-10-06)
+  genesis: { loop: 200, foldTurns: 1 },   // locked (Calvin 2026-10-07)
 };
 function deriveTraits(hash) {
-  if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis", waveMode: 4, foldDir: 1 };
+  if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis", waveMode: 4, foldDir: 1, foldLabel: "folding out" };
   const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16), b2 = parseInt(hash.slice(4, 6), 16);
   const mn = Object.keys(MOTIONS);
   // weighted: Sunlight 40 / Moonlight 30 / Midnight 20 / SolarEclipse 5 / LunarEclipse 5 (Calvin 2026-10-06)
   const palette = b0 < 103 ? "Sunlight" : b0 < 180 ? "Moonlight" : b0 < 231 ? "Midnight" : b0 < 244 ? "SolarEclipse" : "LunarEclipse";
-  // wave mode trait (Calvin 2026-10-06): Still 40 / Double 20 / Spiral 40 (pulse retired)
-  const waveMode = b1 < 103 ? 4 : b1 < 154 ? 3 : 2;
-  // fold direction trait (Calvin 2026-10-06): 50/50 forward/reverse
+  // wave mode trait (Calvin 2026-10-07): Still 50 / Spiral 50 (pulse + double retired)
+  const waveMode = b1 < 128 ? 4 : 2;
+  // fold direction trait (Calvin 2026-10-06): 50/50 folding out / folding in
   const foldDir = b2 % 2 === 0 ? 1 : -1;
-  return { palette, motion: mn[b1 % mn.length], waveMode, foldDir };
+  const foldLabel = foldDir === 1 ? "folding out" : "folding in"; // (Calvin 2026-10-07)
+  return { palette, motion: mn[b1 % mn.length], waveMode, foldDir, foldLabel };
 }
 // Public traits for metadata/listing — palette only. Motion and all
 // hash-derived details (dot selection, z-depths) are hidden (Calvin 2026-10-05).
@@ -167,6 +169,7 @@ const PAL = (() => {
     shellCols: null,
     lattice: hexRgb(p.lattice), latticeMul: p.latticeMul,
     dotRamp: p.dotRamp.map(hexRgb),
+    webGrad: p.webGrad || null,
     web3: [p.web3[0], p.web3[1]], web6: [p.web6[0], p.web6[1]],
     web9: [p.web9[0], p.web9[1]], web12: [p.web12[0], p.web12[1]],
     core: p.heart,
@@ -626,7 +629,7 @@ const heartBlurCv = document.createElement("canvas");
 const heartBlurCtx = heartBlurCv.getContext("2d");
 function draw(now) {
   const t = (now - t0) / 1000;
-  const lp = (t % MOT.loop) / MOT.loop; // trait-driven loop (genesis: 220s)
+  const lp = (t % MOT.loop) / MOT.loop; // trait-driven loop (genesis: 200s)
   const wp = (t % (MOT.loop / 2)) / (MOT.loop / 2); // breath: half the loop
   const b = basis(TAU * lp); // locked 360° orbit
   const tri = wp < 0.5 ? wp * 2 : 2 - wp * 2;
@@ -804,7 +807,13 @@ function draw(now) {
   // nearest neighbors (drawn at the very bottom of the stack)
   ctx.save();
   ctx.globalAlpha = PAL.web12[1];
-  ctx.strokeStyle = PAL.web12[0];
+  if (PAL.webGrad) {
+    const wg = ctx.createRadialGradient(half, half, 0, half, half, SC * 0.5);
+    PAL.webGrad.forEach((c, i) => wg.addColorStop(i / (PAL.webGrad.length - 1), c));
+    ctx.strokeStyle = wg;
+  } else {
+    ctx.strokeStyle = PAL.web12[0];
+  }
   ctx.lineWidth = 1;
   ctx.beginPath();
   for (let s = 0; s < CPAIRS12.length; s++) {
@@ -818,7 +827,13 @@ function draw(now) {
   // dot to its 9 nearest neighbors
   ctx.save();
   ctx.globalAlpha = PAL.web9[1];
-  ctx.strokeStyle = PAL.web9[0];
+  if (PAL.webGrad) {
+    const wg = ctx.createRadialGradient(half, half, 0, half, half, SC * 0.5);
+    PAL.webGrad.forEach((c, i) => wg.addColorStop(i / (PAL.webGrad.length - 1), c));
+    ctx.strokeStyle = wg;
+  } else {
+    ctx.strokeStyle = PAL.web9[0];
+  }
   ctx.lineWidth = 1;
   ctx.beginPath();
   for (let s = 0; s < CPAIRS9.length; s++) {
@@ -832,7 +847,13 @@ function draw(now) {
   // to its 6 nearest neighbors (drawn under the green layer)
   ctx.save();
   ctx.globalAlpha = PAL.web6[1];
-  ctx.strokeStyle = PAL.web6[0];
+  if (PAL.webGrad) {
+    const wg = ctx.createRadialGradient(half, half, 0, half, half, SC * 0.5);
+    PAL.webGrad.forEach((c, i) => wg.addColorStop(i / (PAL.webGrad.length - 1), c));
+    ctx.strokeStyle = wg;
+  } else {
+    ctx.strokeStyle = PAL.web6[0];
+  }
   ctx.lineWidth = 1;
   ctx.beginPath();
   for (let s = 0; s < CPAIRS6.length; s++) {
@@ -846,7 +867,13 @@ function draw(now) {
   // neighbors, redrawn every frame (the viewpoint orbits, so projections move)
   ctx.save();
   ctx.globalAlpha = PAL.web3[1];
-  ctx.strokeStyle = PAL.web3[0];
+  if (PAL.webGrad) {
+    const wg = ctx.createRadialGradient(half, half, 0, half, half, SC * 0.5);
+    PAL.webGrad.forEach((c, i) => wg.addColorStop(i / (PAL.webGrad.length - 1), c));
+    ctx.strokeStyle = wg;
+  } else {
+    ctx.strokeStyle = PAL.web3[0];
+  }
   ctx.lineWidth = 1;
   ctx.beginPath();
   for (let s = 0; s < CPAIRS.length; s++) {
@@ -902,11 +929,14 @@ function draw(now) {
     eg.addColorStop(1, "#1a0800");
     if (PAL.eclipseHalf) {
       // half disc: left half only, right cut away (mirrored, Calvin 2026-10-06)
+      // soft blur on the disc edge (Calvin 2026-10-07)
+      if (PAL.eclipseBlur) ctx.filter = `blur(${PAL.eclipseBlur}px)`;
       ctx.fillStyle = PAL.eclipseColor || "#000";
       ctx.beginPath();
       ctx.arc(half, half, er, Math.PI / 2, Math.PI * 3 / 2);
       ctx.closePath();
       ctx.fill();
+      ctx.filter = "none";
     } else {
       ctx.fillStyle = eg;
       ctx.beginPath();
