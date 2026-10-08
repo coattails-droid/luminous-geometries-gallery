@@ -110,7 +110,6 @@ const PALETTES = {
     shell: "#3dff73",
     web3: ["#370b2b", 0.29], web6: ["#235050", 0.30],
     web9: ["#282867", 0.25], web12: ["#7e2a67", 0.20], // linework opacity up lightly (Calvin 2026-10-08)
-    webDash: [7, 4], // stippled linework (Calvin 2026-10-08)
     heart: "#f8fbff",
     lattice: "#bfffd2", latticeMul: 0.72,
     dotRamp: ["#bfffd2", "#3dff73", "#fc6cdc", "#5c64a8", "#3f4993"],
@@ -817,7 +816,6 @@ function draw(now) {
     ctx.strokeStyle = PAL.web12[0];
   }
   ctx.lineWidth = 1;
-  if (PAL.webDash) ctx.setLineDash(PAL.webDash);
   ctx.beginPath();
   for (let s = 0; s < CPAIRS12.length; s++) {
     const a = CPAIRS12[s][0], b2 = CPAIRS12[s][1];
@@ -838,7 +836,6 @@ function draw(now) {
     ctx.strokeStyle = PAL.web9[0];
   }
   ctx.lineWidth = 1;
-  if (PAL.webDash) ctx.setLineDash(PAL.webDash);
   ctx.beginPath();
   for (let s = 0; s < CPAIRS9.length; s++) {
     const a = CPAIRS9[s][0], b2 = CPAIRS9[s][1];
@@ -859,7 +856,6 @@ function draw(now) {
     ctx.strokeStyle = PAL.web6[0];
   }
   ctx.lineWidth = 1;
-  if (PAL.webDash) ctx.setLineDash(PAL.webDash);
   ctx.beginPath();
   for (let s = 0; s < CPAIRS6.length; s++) {
     const a = CPAIRS6[s][0], b2 = CPAIRS6[s][1];
@@ -880,7 +876,6 @@ function draw(now) {
     ctx.strokeStyle = PAL.web3[0];
   }
   ctx.lineWidth = 1;
-  if (PAL.webDash) ctx.setLineDash(PAL.webDash);
   ctx.beginPath();
   for (let s = 0; s < CPAIRS.length; s++) {
     const a = CPAIRS[s][0], b2 = CPAIRS[s][1];
