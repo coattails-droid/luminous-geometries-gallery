@@ -15,7 +15,7 @@
 </head>
 <body>
 <canvas id="c" width="720" height="720"></canvas>
-<div id="cap">luminous geometries #1 · sunlight · spiral · 227s loop</div>
+<div id="cap">luminous geometries #1 · sunlight · spiral</div>
 <script>
 "use strict";
 const GEO = {"token": 1, "hash": "0cc436cdf2de1b9640003c70187c8804788c8d095f163fca2c7029da8e91959d", "S": 720, "mod": 240, "traits": {"density": "sparse", "rings": 3, "dotGrid": "circle", "trains": 2, "accent": "bold", "hue": ["ember", "amber", "coral"], "grid": "fusion"}, "foci": [{"x": 43.32498794823795, "y": 569.0859553915957, "bi": 2, "bj": 3}, {"x": 569.0859553915957, "y": 676.675012051762, "bi": 3, "bj": 1}], "radii": [{"r": 240, "n": 1}, {"r": 339.4112549695428, "n": 2}, {"r": 960, "n": 16}], "dots": [{"x": 268.4567457151675, "y": 315.2022045570084, "color": "#2e6bff"}, {"x": 0.4715672232677832, "y": -95.380052294513, "color": "#8b2bff"}, {"x": 803.3160145887692, "y": -15.723107351288604, "color": "#8b2bff"}, {"x": 547.2654327354521, "y": 338.3357306206388, "color": "#2e6bff"}, {"x": 442.7158052044014, "y": 361.8415285852853, "color": "#8b2bff"}, {"x": 445.6877778247056, "y": 471.0113827736119, "color": "#2e6bff"}, {"x": 364.8213315260546, "y": 460.32756122837884, "color": "#00ff66"}, {"x": 276.73923344842547, "y": 514.3827428969495, "color": "#b6ff00"}, {"x": 325.7178655433475, "y": 380.82403699485593, "color": "#ff2bd6"}, {"x": 163.32498794823792, "y": 361.2398584833304, "color": "#00ff66"}, {"x": 774.6363860780403, "y": 800.0052704636288, "color": "#2e6bff"}, {"x": -67.11553069298543, "y": -40.77694219855107, "color": "#00f0ff"}, {"x": 804.6052958865039, "y": 721.3420169792487, "color": "#00f0ff"}, {"x": 9.42425812001792, "y": 806.391064189136, "color": "#00ff66"}, {"x": 804.1694149661404, "y": 629.658320136853, "color": "#00f0ff"}, {"x": 132.61864910893678, "y": 791.5485729722058, "color": "#00ff66"}, {"x": -89.65829877972536, "y": 369.61102529965075, "color": "#00f0ff"}, {"x": -63.88331615840667, "y": 247.46104307166195, "color": "#8b2bff"}, {"x": 790.2115605424941, "y": 419.7086408727444, "color": "#b6ff00"}, {"x": 749.165857435229, "y": 518.415632664272, "color": "#00ff66"}, {"x": 202.3753594693832, "y": 748.448943954174, "color": "#00f0ff"}, {"x": 337.51199809868194, "y": 738.7250668964776, "color": "#8b2bff"}, {"x": -2.7322427649455, "y": 333.5840931578373, "color": "#00ff66"}, {"x": 21.504465292094373, "y": 230.74667396047255, "color": "#8b2bff"}, {"x": 685.4327209189557, "y": 467.09265986856354, "color": "#b6ff00"}, {"x": 230.13145754752, "y": 670.9730139886293, "color": "#8b2bff"}, {"x": 676.1576144183393, "y": 355.00619490959167, "color": "#00f0ff"}, {"x": 77.24983683072675, "y": 331.61201321417394, "color": "#2e6bff"}, {"x": 111.292329255203, "y": 236.9464587792683, "color": "#00ff66"}, {"x": 375.7832047681462, "y": 635.5775987555772, "color": "#b6ff00"}, {"x": 603.0108042740845, "y": 439.2010698743402, "color": "#2e6bff"}, {"x": 281.3404989188671, "y": 599.5738493641697, "color": "#ff2bd6"}, {"x": 363.4223261134456, "y": 553.2768344848719, "color": "#00f0ff"}, {"x": 193.59750171972522, "y": 265.1652812459986, "color": "#2e6bff"}, {"x": 520.9829334594915, "y": 441.60750488088013, "color": "#2e6bff"}, {"x": 243.00690665452254, "y": 435.9646762540726, "color": "#2e6bff"}], "layerAngles": [1.308996938995747, 1.8325957145940457, 2.356194490192345], "layerTints": ["#99f6e4", "#a5f3fc", "#c4b5fd"], "dotRings": [12, 21, 33, 33]};
@@ -119,16 +119,16 @@ const PALETTES = {
   },
   // "LunarEclipse" — smoked chrome + black occluder (Calvin 2026-10-06, locked)
   LunarEclipse: {
-    shell: "#e8ecf1",
-    web3: ["#a82800", 0.08], web6: ["#147a70", 0.09],
-    web9: ["#0e4a44", 0.065], web12: ["#a82800", 0.055], // blood red on inner+outer webs (Calvin 2026-10-07)
-    webGrad: ["#a82800", "#2fd8c0", "#1fa898", "#147a6e", "#a82800"], // blood red inner+outer, teal middle (Calvin 2026-10-07)
+    shell: "#a8d8d0", // pale seafoam to match linework (Calvin 2026-10-07)
+    web3: ["#e59c88", 0.0533], web6: ["#89bcb7", 0.06],
+    web9: ["#86a4a1", 0.0433], web12: ["#e59c88", 0.0367], // blood red on inner+outer webs (Calvin 2026-10-07)
+    webGrad: ["#e59c88", "#97ebdf", "#8fd3cb", "#89bcb6", "#e59c88"], // blood red inner+outer, teal middle (Calvin 2026-10-07)
     heart: "#b7b9bb",
     lattice: "#c0c5ce", latticeMul: 0.72,
     dotRamp: ["#e8ecf1", "#a8b0bd", "#6e7683", "#ffffff", "#8a919e"],
     wash: ["#8a919e", "#c0c5ce", "#5a6270"], washMul: 0.64,
     shellGain: 1.5,
-    eclipse: 1.15, eclipseColor: "#a82800", eclipseAlpha: 1.0, // blood red disc, full opacity (Calvin 2026-10-07)
+    eclipse: 1.15, eclipseColor: "#e59c88", eclipseAlpha: 0.85, // lightened blood red, 85% opacity (Calvin 2026-10-07)
   },
   // "SolarEclipse" — red field, yellow sun, black occluder (Calvin 2026-10-06, locked)
   SolarEclipse: {
@@ -152,8 +152,8 @@ function deriveTraits(hash) {
   const mn = Object.keys(MOTIONS);
   // weighted: Sunlight 40 / Moonlight 30 / Midnight 20 / SolarEclipse 5 / LunarEclipse 5 (Calvin 2026-10-06)
   const palette = b0 < 103 ? "Sunlight" : b0 < 180 ? "Moonlight" : b0 < 231 ? "Midnight" : b0 < 244 ? "SolarEclipse" : "LunarEclipse";
-  // wave mode trait (Calvin 2026-10-07): Still 50 / Spiral 50 (pulse + double retired)
-  const waveMode = b1 < 128 ? 4 : 2;
+  // wave mode trait (Calvin 2026-10-07): Still 60 / Spiral 40 (pulse + double retired)
+  const waveMode = b1 < 154 ? 4 : 2;
   // fold direction trait (Calvin 2026-10-06): 50/50 folding out / folding in
   const foldDir = b2 % 2 === 0 ? 1 : -1;
   const foldLabel = foldDir === 1 ? "folding out" : "folding in"; // (Calvin 2026-10-07)
@@ -663,12 +663,11 @@ function draw(now) {
       if (WAVE_MODE === 4) {
         g = 0; // wave off: steady
       } else if (spiralHere) {
-        // spiral: radial front crossed with rotating twisted arms
-        const q0 = (d - RMAX * tri) / 0.22;
+        // spiral: rotating twisted arms, steady radius (no zoom pulsing — Calvin 2026-10-07)
         const lon = Math.atan2(y - CV[1], x - CV[0]);
         const tw = lon * 2 - (d / RMAX) * 5.0 + TAU * lp * 2;
         const arm = 0.5 + 0.5 * Math.cos(tw);
-        g = Math.exp(-q0 * q0) * (0.25 + 0.75 * arm * arm);
+        g = 0.25 + 0.75 * arm * arm;
       } else {
         let dw1 = Math.abs(d - W0A), dw2 = Math.abs(d - W0B);
         const q1 = dw1 / 0.22;
@@ -677,8 +676,8 @@ function draw(now) {
         const g2 = W0B < 0 ? 0 : Math.exp(-q2 * q2);
         g = Math.max(g1, g2);
       }
-      const amp = fm === 0 ? 0.10 : 0.08;
-      x += DX[i] * g * amp; y += DY[i] * g * amp; z += DZ[i] * g * amp;
+      // spiral is brightness-only (no positional displacement) so its radius
+      // matches the still viewpoint exactly (Calvin 2026-10-07)
       br = fm === 0 ? 1 + 2 * Math.min(g, 1.2) : 1 + 0.8 * g;
     }
     if (fm === 0) {
