@@ -150,10 +150,10 @@ function deriveTraits(hash) {
   if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis", waveMode: 4, foldDir: 1, foldLabel: "folding out" };
   const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16), b2 = parseInt(hash.slice(4, 6), 16);
   const mn = Object.keys(MOTIONS);
-  // weighted: Sunlight 40 / Moonlight 30 / Midnight 20 / SolarEclipse 5 / LunarEclipse 5 (Calvin 2026-10-06)
-  const palette = b0 < 103 ? "Sunlight" : b0 < 180 ? "Moonlight" : b0 < 231 ? "Midnight" : b0 < 244 ? "SolarEclipse" : "LunarEclipse";
-  // wave mode trait (Calvin 2026-10-07): Still 60 / Spiral 40 (pulse + double retired)
-  const waveMode = b1 < 154 ? 4 : 2;
+  // weighted: Sunlight 60 / Moonlight 10 / Midnight 10 / SolarEclipse 10 / LunarEclipse 10 (Calvin 2026-10-07)
+  const palette = b0 < 154 ? "Sunlight" : b0 < 180 ? "Moonlight" : b0 < 206 ? "Midnight" : b0 < 232 ? "SolarEclipse" : "LunarEclipse";
+  // wave mode trait (Calvin 2026-10-07): Still 80 / Spiral 20 (pulse + double retired)
+  const waveMode = b1 < 205 ? 4 : 2;
   // fold direction trait (Calvin 2026-10-06): 50/50 folding out / folding in
   const foldDir = b2 % 2 === 0 ? 1 : -1;
   const foldLabel = foldDir === 1 ? "folding out" : "folding in"; // (Calvin 2026-10-07)
@@ -678,9 +678,9 @@ function draw(now) {
       }
       // spiral is brightness-only (no positional displacement) so its radius
       // matches the still viewpoint exactly (Calvin 2026-10-07).
-      // Dim the troughs instead of boosting the peaks: multiplicative
-      // brightening clips the dominant channel and hue-shifts (e.g. green→teal).
-      br = fm === 0 ? 0.4 + 0.6 * Math.min(g, 1.2) : 0.6 + 0.4 * g;
+      // Keep the modulation tight against still's br=1.0 so the palette
+      // colorization stays visually consistent across both motions (Calvin 2026-10-07).
+      br = fm === 0 ? 0.9 + 0.1 * Math.min(g, 1.2) : 0.95 + 0.05 * g;
     }
     if (fm === 0) {
       // spin the shell systems in place about the z-axis through the fixed
