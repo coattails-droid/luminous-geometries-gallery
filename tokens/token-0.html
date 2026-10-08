@@ -15,10 +15,10 @@
 </head>
 <body>
 <canvas id="c" width="720" height="720"></canvas>
-<div id="cap">luminous geometries #0 · sunlight · star · sparse</div>
+<div id="cap">luminous geometries #0 · sunlight · star</div>
 <script>
 "use strict";
-const GEO = {"token": 0, "hash": "477f5346e6ef08bbbc89a75385a3d75627b253f19cb03107aae006694fdc4fb4", "dotCount": "Sparse", "S": 720, "mod": 180, "traits": {"density": "standard", "rings": 6, "dotGrid": "circle", "trains": 2, "accent": "classic", "hue": ["ember"], "grid": "fusion"}, "foci": [{"x": 139.54592314951395, "y": 232.7207793864215, "bi": 1, "bj": 3}, {"x": 580.454076850486, "y": 487.27922061357845, "bi": 3, "bj": 1}], "radii": [{"r": 254.55844122715712, "n": 2}, {"r": 360, "n": 4}, {"r": 402.49223594996215, "n": 5}, {"r": 540, "n": 9}, {"r": 742.1590126111789, "n": 17}, {"r": 804.9844718999243, "n": 20}], "dots": [{"x": 730.2580089761185, "y": 114.06376017276358, "color": "#8b2bff"}, {"x": 571.3822534827899, "y": -51.994083249682085, "color": "#00f0ff"}, {"x": 354.67899309923894, "y": 207.06234633125985, "color": "#00f0ff"}, {"x": 315.04502905996884, "y": 789.2823973768791, "color": "#00f0ff"}, {"x": 623.0807548195759, "y": -6.361326019555889, "color": "#2e6bff"}, {"x": 343.1313502054945, "y": 80.41161024512797, "color": "#00ff66"}, {"x": 480.6806578994449, "y": 119.00920113644452, "color": "#ff2bd6"}, {"x": 393.5501196493906, "y": 487.27922061357845, "color": "#8b2bff"}, {"x": 763.2357859274715, "y": 310.5453937817235, "color": "#2e6bff"}, {"x": 155.9113151416215, "y": -21.033681686920943, "color": "#8b2bff"}, {"x": 360.23606774726403, "y": 614.4221474497272, "color": "#b6ff00"}, {"x": 234.7540428715594, "y": 388.3879472552047, "color": "#2e6bff"}, {"x": 88.69482840718388, "y": 588.678442582732, "color": "#00f0ff"}, {"x": 636.6409872275913, "y": 443.1753667421249, "color": "#8b2bff"}, {"x": 234.25615313506978, "y": -3.236458791217097, "color": "#ff2bd6"}, {"x": 403.72025001863125, "y": 670.060929690564, "color": "#8b2bff"}, {"x": -63.48381114868562, "y": 120.01160971918407, "color": "#00ff66"}, {"x": 741.1476757596779, "y": 766.1919432382374, "color": "#2e6bff"}, {"x": 26.841537820898324, "y": 4.7802737772237265, "color": "#8b2bff"}, {"x": 84.08665713698775, "y": 276.2534696094311, "color": "#00ff66"}, {"x": 258.14087697215217, "y": 54.82834865246423, "color": "#00ff66"}, {"x": 311.7012088331373, "y": 420.0910036092413, "color": "#2e6bff"}, {"x": 639.077345908047, "y": 780.3955659013836, "color": "#2e6bff"}, {"x": -73.6261109570051, "y": 19.54874527990244, "color": "#00f0ff"}, {"x": 650.3807668423647, "y": 242.83238233065953, "color": "#2e6bff"}, {"x": 438.75831828743145, "y": 432.1957094783664, "color": "#b6ff00"}, {"x": 563.8101705923916, "y": 565.746536569315, "color": "#2e6bff"}, {"x": 609.6338539602874, "y": 497.1503926001253, "color": "#ff2bd6"}, {"x": 781.8217884749159, "y": 716.4111553173764, "color": "#8b2bff"}, {"x": 403.720250018631, "y": 304.49751153659304, "color": "#ff2bd6"}, {"x": 711.8874647582268, "y": 269.6328149115288, "color": "#2e6bff"}, {"x": 153.50166293837745, "y": 771.9141632216507, "color": "#b6ff00"}, {"x": 427.45919519360007, "y": 17.323086713026527, "color": "#ff2bd6"}, {"x": 756.4091952841279, "y": 643.9629608094973, "color": "#00ff66"}, {"x": 395.45868923268586, "y": 795.6048666432455, "color": "#00ff66"}, {"x": 491.8330586812088, "y": 304.8110312924848, "color": "#8b2bff"}, {"x": 264.32954307782836, "y": 315.90985933863107, "color": "#ff2bd6"}, {"x": 343.5028539438593, "y": 2.7161318307176145, "color": "#8b2bff"}, {"x": 211.63617505557744, "y": 585.0079149181163, "color": "#00f0ff"}, {"x": 576.1775783031364, "y": 741.4950939966352, "color": "#2e6bff"}, {"x": 139.545923149514, "y": 487.2792206135786, "color": "#8b2bff"}, {"x": 339.020853241459, "y": -66.49161575149596, "color": "#ff2bd6"}, {"x": 59.13969506953047, "y": 473.9394636263719, "color": "#8b2bff"}, {"x": 351.1210367666041, "y": 373.7708551311482, "color": "#8b2bff"}, {"x": 205.545014596925, "y": 99.54066271796907, "color": "#b6ff00"}, {"x": 297.7447839502547, "y": 265.0937915577717, "color": "#b6ff00"}, {"x": -31.021444225451532, "y": 744.4228815113179, "color": "#00f0ff"}, {"x": 518.7889476445525, "y": 240.61870378984483, "color": "#00ff66"}, {"x": 90.9481720867802, "y": 769.8955864988155, "color": "#2e6bff"}, {"x": -28.526779352232918, "y": 64.64807688467462, "color": "#b6ff00"}, {"x": 686.9747530740838, "y": 718.1540311328429, "color": "#00f0ff"}, {"x": 234.2561531350699, "y": 468.67801756406004, "color": "#2e6bff"}, {"x": 69.48674044376605, "y": 660.1334010344519, "color": "#00f0ff"}, {"x": 499.9515075172394, "y": 54.519499422576416, "color": "#b6ff00"}], "layerAngles": [1.308996938995747, 1.8325957145940457, 2.356194490192345], "layerTints": ["#99f6e4", "#a5f3fc", "#c4b5fd"], "dotRings": [12, 21, 33, 33]};
+const GEO = {"token": 0, "hash": "5e4f36300ce78769cbfe695ba1e6c535b892b3d068f1a93eab8274e80525640a", "dotCount": "Sparse", "S": 720, "mod": 240, "traits": {"density": "sparse", "rings": 3, "dotGrid": "circle", "trains": 2, "accent": "classic", "hue": ["amber"], "grid": "fusion"}, "foci": [{"x": 275.1471862576143, "y": 506.9693845669907, "bi": 2, "bj": 2}, {"x": 213.0306154330093, "y": 275.1471862576143, "bi": 1, "bj": 2}], "radii": [{"r": 480, "n": 4}, {"r": 678.8225099390856, "n": 8}, {"r": 720, "n": 9}], "dots": [{"x": 751.7190423520684, "y": 454.709995230634, "color": "#00f0ff"}, {"x": 686.2480476305037, "y": 260.3088677432571, "color": "#b6ff00"}, {"x": 749.9858873254432, "y": 573.2305337664753, "color": "#8b2bff"}, {"x": -63.90061863878232, "y": 167.9215796705943, "color": "#8b2bff"}, {"x": 507.84071731233445, "y": 87.80468020059372, "color": "#8b2bff"}, {"x": 729.340374174699, "y": 660.6175449411003, "color": "#00ff66"}, {"x": 805.8190252160766, "y": -53.93116123645625, "color": "#ff2bd6"}, {"x": 59.382455058899836, "y": 729.340374174699, "color": "#b6ff00"}, {"x": 241.75699394029508, "y": 753.7359497762659, "color": "#2e6bff"}, {"x": -63.90061863878253, "y": -80.27863970826786, "color": "#ff2bd6"}, {"x": 267.0833432641067, "y": 27.615336688536846, "color": "#00ff66"}, {"x": -19.662915621710862, "y": 694.3118906240113, "color": "#ff2bd6"}, {"x": 682.7467961419356, "y": 179.02685038286296, "color": "#00f0ff"}, {"x": 632.1953197994063, "y": 507.84071731233433, "color": "#00ff66"}, {"x": 711.0255445021301, "y": -12.370320095511438, "color": "#ff2bd6"}, {"x": 153.20742972099447, "y": 750.8488976402303, "color": "#ff2bd6"}, {"x": 651.8836442076866, "y": 82.11921696193362, "color": "#ff2bd6"}, {"x": 577.043883536245, "y": -36.85510118646473, "color": "#b6ff00"}, {"x": 95.0587050897571, "y": 62.63736401017184, "color": "#00f0ff"}, {"x": 477.202770738372, "y": 675.2540241769069, "color": "#2e6bff"}], "layerAngles": [1.308996938995747, 1.8325957145940457, 2.356194490192345], "layerTints": ["#99f6e4", "#a5f3fc", "#c4b5fd"], "dotRings": [12, 21, 33, 33]};
 // ---------------------------------------------------------------------------
 // Luminous Geometries. The genesis hash's geometry was dumped from
 // the real 2D engine (dump_geo_hash.js): foci, ring radii, star
@@ -150,26 +150,27 @@ function deriveTraits(hash) {
   if (hash === GENESIS_HASH) return { palette: "Sunlight", motion: "genesis", waveMode: 4, foldDir: 1, foldLabel: "folding out", dotCount: "Standard" };
   const b0 = parseInt(hash.slice(0, 2), 16), b1 = parseInt(hash.slice(2, 4), 16), b2 = parseInt(hash.slice(4, 6), 16), b3 = parseInt(hash.slice(6, 8), 16);
   const mn = Object.keys(MOTIONS);
-  // weighted: Sunlight 60 / Moonlight 10 / Midnight 10 / SolarEclipse 10 / LunarEclipse 10 (Calvin 2026-10-07)
-  const palette = b0 < 154 ? "Sunlight" : b0 < 180 ? "Moonlight" : b0 < 206 ? "Midnight" : b0 < 232 ? "SolarEclipse" : "LunarEclipse";
-  // wave mode trait (Calvin 2026-10-07): Star 80 / Spiral 20 (pulse + double retired)
-  const waveMode = b1 < 205 ? 4 : 2;
+  // weighted: Sunlight 40 / Moonlight 15 / Midnight 15 / SolarEclipse 15 / LunarEclipse 15 (Calvin 2026-10-08)
+  const palette = b0 < 103 ? "Sunlight" : b0 < 141 ? "Moonlight" : b0 < 179 ? "Midnight" : b0 < 217 ? "SolarEclipse" : "LunarEclipse";
+  // wave mode trait (Calvin 2026-10-08): Star 50 / Spiral 50 (pulse + double retired)
+  const waveMode = b1 < 128 ? 4 : 2;
   // fold direction trait (Calvin 2026-10-06): 50/50 folding out / folding in
   const foldDir = b2 % 2 === 0 ? 1 : -1;
   const foldLabel = foldDir === 1 ? "folding out" : "folding in"; // (Calvin 2026-10-07)
-  // dot count trait (Calvin 2026-10-08): Sparse / Standard / Dense from byte 3
+  // points trait (Calvin 2026-10-08): Sparse / Standard / Dense from byte 3
   const dotCount = b3 < 85 ? "Sparse" : b3 < 170 ? "Standard" : "Dense";
   return { palette, motion: mn[b1 % mn.length], waveMode, foldDir, foldLabel, dotCount };
 }
 // Public traits for metadata/listing — palette only. Motion and all
 // hash-derived details (dot selection, z-depths) are hidden (Calvin 2026-10-05).
-// Public traits for metadata/listing — Palette + Wave + Dots. Fold direction
-// stays hash-assigned but hidden (Calvin 2026-10-07).
+// Public traits for metadata/listing — Palette + Wave + Points + Form.
+// (Calvin 2026-10-08: Form brought back into public traits, renamed from Fold)
 function publicTraits() {
   return {
     Palette: TRAITS.palette,
     Wave: TRAITS.waveMode === 4 ? "Star" : "Spiral",
-    Dots: TRAITS.dotCount,
+    Points: TRAITS.dotCount,
+    Form: TRAITS.foldLabel,
   };
 }
 const TRAITS = deriveTraits(HASH);
