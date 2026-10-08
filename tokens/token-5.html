@@ -677,8 +677,10 @@ function draw(now) {
         g = Math.max(g1, g2);
       }
       // spiral is brightness-only (no positional displacement) so its radius
-      // matches the still viewpoint exactly (Calvin 2026-10-07)
-      br = fm === 0 ? 1 + 2 * Math.min(g, 1.2) : 1 + 0.8 * g;
+      // matches the still viewpoint exactly (Calvin 2026-10-07).
+      // Dim the troughs instead of boosting the peaks: multiplicative
+      // brightening clips the dominant channel and hue-shifts (e.g. green→teal).
+      br = fm === 0 ? 0.4 + 0.6 * Math.min(g, 1.2) : 0.6 + 0.4 * g;
     }
     if (fm === 0) {
       // spin the shell systems in place about the z-axis through the fixed
